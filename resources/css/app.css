@@ -1,3 +1,54 @@
 @import "tailwindcss" theme(static);
 @source "../views/";
 @source "../../app/";
+
+@font-face {
+font-family:"bickham-script-pro-3";
+src:url("https://use.typekit.net/af/85e324/000000000000000077359400/31/l?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/85e324/000000000000000077359400/31/d?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/85e324/000000000000000077359400/31/a?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"bickham-script-pro-3";
+src:url("https://use.typekit.net/af/22631d/000000000000000077359401/31/l?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n6&v=3") format("woff2"),url("https://use.typekit.net/af/22631d/000000000000000077359401/31/d?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n6&v=3") format("woff"),url("https://use.typekit.net/af/22631d/000000000000000077359401/31/a?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n6&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:600;font-stretch:normal;
+}
+
+@font-face {
+font-family:"bickham-script-pro-3";
+src:url("https://use.typekit.net/af/9a15d6/000000000000000077359402/31/l?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n7&v=3") format("woff2"),url("https://use.typekit.net/af/9a15d6/000000000000000077359402/31/d?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n7&v=3") format("woff"),url("https://use.typekit.net/af/9a15d6/000000000000000077359402/31/a?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n7&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
+}
+
+.heading-1 {
+    font-family: 'bickham-script-pro-3', serif;
+    font-weight: 400;
+    font-size: 120px;
+    line-height: 0.5;
+}
+
+.heading-2 {
+    font-family: 'bickham-script-pro-3', serif;
+    font-weight: 400;
+    font-size: 64px;
+}
+
+.body-text {
+    font-family: 'bickham-script-pro-3', serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.1;
+}
+
+a {
+	text-decoration: none;
+}
+
+.screen-reader-response {
+    display: none !important;
+}
+
+.wpcf7-form .hidden-fields-container,
+.wpcf7-form .wpcf7-response-output {
+  display: none !important;
+}

@@ -169,11 +169,15 @@
     <!-- CTA / READY TO GLOW SECTION -->
     <section class="relative overflow-hidden">
         <!-- background image -->
-        <div class="absolute inset-0 bg-[url('/images/cta-bg.jpg')] bg-cover bg-center" aria-hidden="true"></div>
-        <!-- color overlay -->
-        <div class="absolute inset-0 bg-[#e5b7a6]/80 mix-blend-multiply" aria-hidden="true"></div>
+        <div class="absolute inset-0 z-0 bg-cover bg-center" aria-hidden="true"
+            style="background-image: url('{{ get_template_directory_uri() }}/resources//images/mirror.png'); background-size: cover; background-position: top center; background-repeat: no-repeat;">
+        </div>
 
-        <div class="relative max-w-4xl mx-auto px-6 py-16 md:py-24 text-center text-white">
+        <!-- color overlay -->
+        <div class="absolute inset-0 z-40 bg-[#e5b7a6]/80 mix-blend-multiply" aria-hidden="true"></div>
+
+        <div
+            class="min-h-[512px] flex justify-center flex-col items-center z-50 relative max-w-4xl mx-auto px-6 py-16 md:py-24 text-center text-white">
             <div data-animate="fade-up">
                 <p class="tracking-[0.35em] text-xs md:text-sm uppercase mb-3">
                     Ready to glow?

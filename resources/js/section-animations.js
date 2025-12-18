@@ -1,4 +1,3 @@
-// Simple intersection-based animation system for Tailwind
 document.addEventListener('DOMContentLoaded', () => {
   const elements = document.querySelectorAll('[data-animate]');
 
@@ -7,10 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const initElement = (el) => {
     const type = el.dataset.animate || 'fade-up';
 
-    // base animation utilities - removed transition from here to avoid initial fade-out
     el.classList.add('opacity-0', 'will-change-transform');
 
-    // initial state depending on animation type
     switch (type) {
       case 'fade-left':
         el.classList.add('translate-x-6');
@@ -32,10 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const activateElement = (el) => {
-    // Add transition classes when activating
     el.classList.add('transition-all', 'duration-700', 'ease-out');
 
-    // Use requestAnimationFrame to ensure the transition class is registered before changing properties
     requestAnimationFrame(() => {
       el.classList.remove(
         'opacity-0',

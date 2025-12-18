@@ -153,3 +153,91 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+
+/**
+ * Add custom routes for the theme
+ */
+add_action('init', function () {
+    // Add rewrite rule for pages
+    add_rewrite_rule('^treatments/?$', 'index.php?custom_page=treatments', 'top');
+    add_rewrite_rule('^about/?$', 'index.php?custom_page=about', 'top');
+    add_rewrite_rule('^devices/?$', 'index.php?custom_page=devices', 'top');
+    add_rewrite_rule('^contact/?$', 'index.php?custom_page=contact', 'top');
+
+    // Flush rewrite rules if not already done
+    if (!get_option('lumiere_rewrite_rules_flushed_v4')) {
+        flush_rewrite_rules();
+        update_option('lumiere_rewrite_rules_flushed_v4', true);
+    }
+});
+
+
+/**
+ * Add custom query vars
+ */
+add_filter('query_vars', function ($vars) {
+    $vars[] = 'custom_page';
+    $vars[] = 'post_slug';
+    $vars[] = 'accountancy_sub';
+    return $vars;
+});
+
+add_action('template_redirect', function () {
+    $custom_page = get_query_var('custom_page');
+
+    if ($custom_page) {
+        switch ($custom_page) {
+            case 'about':
+                global $wp_query, $post;
+
+                $about_page = get_page_by_path('about');
+                if ($about_page) {
+                    $wp_query->queried_object = $about_page;
+                    $wp_query->queried_object_id = $about_page->ID;
+                    $post = $about_page;
+                    setup_postdata($post);
+                }
+
+                echo view('template-about')->render();
+                exit;
+            case 'treatments':
+                global $wp_query, $post;
+
+                $treatments_page = get_page_by_path('treatments');
+                if ($treatments_page) {
+                    $wp_query->queried_object = $treatments_page;
+                    $wp_query->queried_object_id = $treatments_page->ID;
+                    $post = $treatments_page;
+                    setup_postdata($post);
+                }
+
+                echo view('template-treatments')->render();
+                exit;
+            case 'devices':
+                global $wp_query, $post;
+                $devices_page = get_page_by_path('devices');
+                if ($devices_page) {
+                    $wp_query->queried_object = $devices_page;
+                    $wp_query->queried_object_id = $devices_page->ID;
+                    $post = $devices_page;
+                    setup_postdata($post);
+                }
+
+                echo view('template-devices')->render();
+                exit;
+            case 'contact':
+                global $wp_query, $post;
+                $contact_page = get_page_by_path('contact');
+                if ($contact_page) {
+                    $wp_query->queried_object = $contact_page;
+                    $wp_query->queried_object_id = $contact_page->ID;
+                    $post = $contact_page;
+                    setup_postdata($post);
+                }
+
+                echo view('template-contact')->render();
+                exit;
+        }
+    }
+});
