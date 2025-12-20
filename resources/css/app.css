@@ -52,3 +52,14 @@ a {
 .wpcf7-form .wpcf7-response-output {
   display: none !important;
 }
+
+.card {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}

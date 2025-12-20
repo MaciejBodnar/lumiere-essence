@@ -1,41 +1,37 @@
 <footer class="bg-[#fdfaf7] border-t border-[#f1e6e1]">
     <div class="max-w-6xl mx-auto px-6 py-12 md:py-16">
         <div class="grid gap-12 md:grid-cols-[2fr_1fr_1fr] items-start">
-            <!-- Brand + socials -->
             <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                <!-- If you have a custom script font, hook it here -->
                 <div>
-                    <p class="font-serif italic text-3xl md:text-4xl leading-tight">
-                        Lumiere Essence
-                    </p>
-                    <p class="mt-2 tracking-[0.35em] text-[10px] md:text-xs uppercase text-[#7b6f69]">
-                        Skincare and Aesthetic
-                    </p>
+                    <img src="{{ get_template_directory_uri() }}/resources/images/footer.png" alt="Lumiere Essence Logo"
+                        class="h-16 mx-auto md:mx-0" />
                 </div>
+                <div class="flex justify-center items-center mt-6 gap-10">
+                    <div class="flex items-center gap-10 text-sm text-[#303030]">
+                        <a href="#" class="hover:text-black transition-colors duration-200">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="hover:text-black transition-colors duration-200">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="hover:text-black transition-colors duration-200">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
 
-                <!-- socials -->
-                <div class="mt-6 flex items-center gap-6 text-sm text-[#303030]">
-                    <a href="#" class="hover:text-black transition-colors duration-200">f</a>
-                    <a href="#" class="hover:text-black transition-colors duration-200"></a>
-                    <a href="#" class="hover:text-black transition-colors duration-200"></a>
+                    <img src="{{ get_template_directory_uri() }}/resources/images/footer-line.png" alt="" />
                 </div>
-
-                <!-- small line -->
-                <div class="mt-4 h-px w-24 bg-[#e5b7a6]"></div>
-
-                <!-- copy + links -->
-                <p class="mt-6 text-[11px] text-[#7b6f69]">
+                <p class="mt-6 text-sm text-[#7b6f69]">
                     2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with
-                    <span class="text-[#e88f9a]">♥</span> SLT Media
+                    <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media
                 </p>
-                <p class="mt-1 text-[11px] text-[#7b6f69]">
+                <p class="mt-1 text-sm text-[#7b6f69]">
                     Privacy Policy | T&amp;C
                 </p>
             </div>
 
-            <!-- Quick links -->
-            <div class="text-center md:text-left">
-                <p class="tracking-[0.35em] text-xs uppercase text-[#303030] mb-4">
+            <div class="text-center">
+                <p class="tracking-[0.35em] text-lg uppercase text-[#303030] mb-4">
                     Quick Links
                 </p>
                 <ul class="space-y-2 text-sm text-[#7b6f69]">
@@ -46,9 +42,8 @@
                 </ul>
             </div>
 
-            <!-- Contact -->
-            <div class="text-center md:text-left">
-                <p class="tracking-[0.35em] text-xs uppercase text-[#303030] mb-4">
+            <div class="text-center">
+                <p class="tracking-[0.35em] text-lg uppercase text-[#303030] mb-4">
                     Contact
                 </p>
                 <div class="space-y-2 text-sm text-[#7b6f69]">
@@ -62,7 +57,7 @@
                         </a>
                     </p>
 
-                    <p class="mt-4 leading-relaxed">
+                    <p class="mt-6 leading-relaxed">
                         123 Road Street<br />
                         City, POST CODE
                     </p>

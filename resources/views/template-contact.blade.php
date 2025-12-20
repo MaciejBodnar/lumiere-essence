@@ -6,24 +6,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- CONTACT -->
     <section id="contact" class="relative bg-white overflow-hidden">
-        <!-- soft flower background -->
-        <div class="pointer-events-none absolute inset-0 opacity-20 mix-blend-lighten bg-[url('/images/flower-soft-wide.jpg')] bg-cover bg-center"
+        <div class="absolute bg-cover bg-center h-full w-full"
+            style="background-image: url('{{ get_template_directory_uri() }}/resources/images/flower-bg-contact.png'); background-size: cover; background-position: center; background-repeat: no-repeat;"
             aria-hidden="true"></div>
 
-        <div class="relative max-w-6xl mx-auto px-6 lg:px-0 py-16 lg:py-24">
-            <div class="grid gap-12 lg:grid-cols-2 items-start">
-                <!-- LEFT: INFO -->
+        <div class="relative max-w-5xl mx-auto px-6 lg:px-0 py-16 lg:py-24">
+            <div class="flex items-baseline gap-4 mb-10">
+                <h2 class="heading-1 text-4xl md:text-5xl text-[#3b2a27]">
+                    Contact
+                </h2>
+                <span class="tracking-[0.35em] text-[10px] md:text-xs uppercase text-[#7b6f69]">
+                    Us
+                </span>
+            </div>
+            <div class="grid gap-12 lg:grid-cols-3 items-start">
                 <div data-animate="fade-left">
-                    <div class="flex items-baseline gap-4 mb-10">
-                        <h2 class="font-serif italic text-4xl md:text-5xl text-[#3b2a27]">
-                            Contact
-                        </h2>
-                        <span class="tracking-[0.35em] text-[10px] md:text-xs uppercase text-[#7b6f69]">
-                            Us
-                        </span>
-                    </div>
 
                     <p class="tracking-[0.35em] text-[10px] md:text-xs uppercase text-[#3b2a27] mb-4">
                         Info
@@ -50,14 +48,20 @@
 
                     <!-- socials -->
                     <div class="mt-8 flex items-center gap-6 text-sm text-[#303030]">
-                        <a href="#" class="hover:text-black transition-colors duration-200">f</a>
-                        <a href="#" class="hover:text-black transition-colors duration-200"></a>
-                        <a href="#" class="hover:text-black transition-colors duration-200"></a>
+                        <a href="#" class="hover:text-black transition-colors duration-200">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="hover:text-black transition-colors duration-200">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="hover:text-black transition-colors duration-200">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
                     </div>
                 </div>
 
                 <!-- RIGHT: FORM -->
-                <div data-animate="fade-right" data-animate-delay="120">
+                <div data-animate="fade-right" data-animate-delay="120" class="col-span-2">
                     <p class="tracking-[0.35em] text-[10px] md:text-xs uppercase text-[#3b2a27] mb-6">
                         Leave a message
                     </p>
@@ -68,12 +72,12 @@
                             <div>
                                 <label class="block text-[11px] text-[#7b6f69] mb-1">Name</label>
                                 <input type="text"
-                                    class="w-full border border-[#e0d6d1] bg-white/70 px-4 py-2 text-sm outline-none focus:border-[#c9936d] transition-colors duration-200" />
+                                    class="w-full border border-[#e0d6d1] px-4 py-2 text-sm outline-none focus:border-[#c9936d] transition-colors duration-200" />
                             </div>
                             <div>
                                 <label class="block text-[11px] text-[#7b6f69] mb-1">Surname</label>
                                 <input type="text"
-                                    class="w-full border border-[#e0d6d1] bg-white/70 px-4 py-2 text-sm outline-none focus:border-[#c9936d] transition-colors duration-200" />
+                                    class="w-full border border-[#e0d6d1] px-4 py-2 text-sm outline-none focus:border-[#c9936d] transition-colors duration-200" />
                             </div>
                         </div>
 
@@ -82,12 +86,12 @@
                             <div>
                                 <label class="block text-[11px] text-[#7b6f69] mb-1">Contact number</label>
                                 <input type="text"
-                                    class="w-full border border-[#e0d6d1] bg-white/70 px-4 py-2 text-sm outline-none focus:border-[#c9936d] transition-colors duration-200" />
+                                    class="w-full border border-[#e0d6d1] px-4 py-2 text-sm outline-none focus:border-[#c9936d] transition-colors duration-200" />
                             </div>
                             <div>
                                 <label class="block text-[11px] text-[#7b6f69] mb-1">Email</label>
                                 <input type="email"
-                                    class="w-full border border-[#e0d6d1] bg-white/70 px-4 py-2 text-sm outline-none focus:border-[#c9936d] transition-colors duration-200" />
+                                    class="w-full border border-[#e0d6d1] px-4 py-2 text-sm outline-none focus:border-[#c9936d] transition-colors duration-200" />
                             </div>
                         </div>
 
@@ -95,12 +99,12 @@
                         <div>
                             <label class="block text-[11px] text-[#7b6f69] mb-1">Message</label>
                             <textarea rows="5"
-                                class="w-full border border-[#e0d6d1] bg-white/70 px-4 py-2 text-sm outline-none resize-none focus:border-[#c9936d] transition-colors duration-200"></textarea>
+                                class="w-full border border-[#e0d6d1] px-4 py-2 text-sm outline-none resize-none focus:border-[#c9936d] transition-colors duration-200"></textarea>
                         </div>
 
                         <!-- Consent checkbox -->
                         <label class="flex items-start gap-3 text-[11px] leading-relaxed text-[#7b6f69]">
-                            <input type="checkbox" class="mt-[3px] h-4 w-4 border border-[#d0c4bd] bg-white/70" />
+                            <input type="checkbox" class="mt-[3px] h-4 w-4 border border-[#d0c4bd]" />
                             <span>
                                 I hereby agree that this data will be stored and processed for the purpose of establishing
                                 contact. I am aware that I can revoke my consent at any time.*
