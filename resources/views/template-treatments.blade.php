@@ -12,7 +12,7 @@
             aria-hidden="true"></div>
 
         <div class="relative max-w-6xl mx-auto px-6 lg:px-0 py-16 lg:py-24">
-            <div class="mb-12" data-animate="fade-up">
+            <div class="mb-12" data-animate="fade-up" data-animate-delay="300">
                 <div class="flex items-baseline gap-6">
                     <h2 class="heading-1 text-4xl md:text-5xl text-[#3b2a27]">
                         Treatments
@@ -24,7 +24,7 @@
             </div>
 
             <div class="grid gap-x-28 gap-y-16 md:grid-cols-2 text-[#3b2a27]">
-                <div data-animate="fade-up">
+                <div data-animate="fade-up" data-animate-delay="300">
                     <h3 class="tracking-[0.35em] text-lg uppercase mb-10">
                         Face &amp; Neck
                     </h3>
@@ -52,7 +52,7 @@
                     </ul>
                 </div>
 
-                <div data-animate="fade-up" data-animate-delay="120">
+                <div data-animate="fade-up" data-animate-delay="320">
                     <h3 class="tracking-[0.35em] text-lg uppercase mb-10">
                         Body
                     </h3>
@@ -80,7 +80,7 @@
                     </ul>
                 </div>
 
-                <div data-animate="fade-up" data-animate-delay="220">
+                <div data-animate="fade-up" data-animate-delay="420">
                     <h3 class="tracking-[0.35em] text-lg uppercase mb-10">
                         Waxing
                     </h3>
@@ -108,7 +108,7 @@
                     </ul>
                 </div>
 
-                <div data-animate="fade-up" data-animate-delay="320">
+                <div data-animate="fade-up" data-animate-delay="450">
                     <h3 class="tracking-[0.35em] text-lg uppercase mb-10">
                         Botox
                     </h3>

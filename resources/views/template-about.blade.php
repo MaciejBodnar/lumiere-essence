@@ -12,8 +12,7 @@
             aria-hidden="true"></div>
 
         <div class="relative max-w-6xl mx-auto px-6 lg:px-0 grid md:grid-cols-[1.3fr_1fr] gap-12 items-center">
-            <!-- Text -->
-            <div data-animate="fade-up">
+            <div data-animate="fade-up" data-animate-delay="300">
                 <div class="flex items-baseline gap-4 mb-6">
                     <h2 class="heading-1 text-4xl md:text-5xl text-[#3b2a27]">
                         About
@@ -32,7 +31,7 @@
                 </p>
             </div>
 
-            <div class="flex justify-center md:justify-end" data-animate="zoom-in" data-animate-delay="120">
+            <div class="flex justify-center md:justify-end" data-animate="zoom-in" data-animate-delay="400">
                 <img src="{{ get_template_directory_uri() }}/resources//images/woman-leaf.png" alt="Woman with leaf"
                     class="max-h-[460px] md:max-h-[520px] object-contain" />
             </div>
@@ -65,7 +64,7 @@
     </section>
 
     <section class="py-12 md:py-24">
-        <div class="max-w-6xl mx-auto px-6 ">
+        <div class="max-w-6xl mx-auto px-6 " data-animate="zoom-in">
             <h2 class="uppercase tracking-[0.25em] text-xl">Lumiere Essence</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 text-sm font-thin text-gray-700 mt-10">
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore

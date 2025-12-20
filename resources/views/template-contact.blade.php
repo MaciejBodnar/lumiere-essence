@@ -12,7 +12,7 @@
             aria-hidden="true"></div>
 
         <div class="relative max-w-5xl mx-auto px-6 lg:px-0 py-16 lg:py-24">
-            <div class="flex items-baseline gap-4 mb-10">
+            <div class="flex items-baseline gap-4 mb-10" data-animate="fade-down" data-animate-delay="200">
                 <h2 class="heading-1 text-4xl md:text-5xl text-[#3b2a27]">
                     Contact
                 </h2>
@@ -21,9 +21,9 @@
                 </span>
             </div>
             <div class="grid gap-12 lg:grid-cols-3 items-start">
-                <div data-animate="fade-left">
+                <div data-animate="fade-left" data-animate-delay="300">
 
-                    <p class="tracking-[0.35em] text-[10px] md:text-xs uppercase text-[#3b2a27] mb-4">
+                    <p class="tracking-[0.35em] text-xl uppercase text-[#3b2a27] mb-4">
                         Info
                     </p>
 
@@ -46,7 +46,6 @@
                         </p>
                     </div>
 
-                    <!-- socials -->
                     <div class="mt-8 flex items-center gap-6 text-sm text-[#303030]">
                         <a href="#" class="hover:text-black transition-colors duration-200">
                             <i class="fa-brands fa-facebook-f"></i>
@@ -60,14 +59,12 @@
                     </div>
                 </div>
 
-                <!-- RIGHT: FORM -->
-                <div data-animate="fade-right" data-animate-delay="120" class="col-span-2">
-                    <p class="tracking-[0.35em] text-[10px] md:text-xs uppercase text-[#3b2a27] mb-6">
+                <div data-animate="fade-right" data-animate-delay="450" class="col-span-2">
+                    <p class="tracking-[0.35em] text-xl uppercase text-[#3b2a27] mb-6">
                         Leave a message
                     </p>
 
                     <form class="space-y-6">
-                        <!-- Name / Surname -->
                         <div class="grid gap-4 md:grid-cols-2">
                             <div>
                                 <label class="block text-[11px] text-[#7b6f69] mb-1">Name</label>

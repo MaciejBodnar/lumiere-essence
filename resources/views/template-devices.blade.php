@@ -32,13 +32,15 @@
                     </div>
 
                     <div class="flex justify-center" data-animate="fade-right" data-animate-delay="120">
-                        <img src="{{ get_template_directory_uri() }}/resources/images/device1.png" alt="Dr Platon device"
+                        <img src="{{ get_template_directory_uri() }}/resources/images/device1.png" data-tilt
+                            data-tilt-max="25" data-tilt-speed="400" data-tilt-perspective="1000" alt="Dr Platon device"
                             class="max-h-[260px] md:max-h-80 object-contain drop-shadow-xl" />
                     </div>
                 </div>
                 <div class="card grid md:grid-cols-2 gap-10 items-center">
                     <div class="flex justify-center" data-animate="fade-right" data-animate-delay="120">
-                        <img src="{{ get_template_directory_uri() }}/resources/images/device2.png" alt="Dr Platon device"
+                        <img src="{{ get_template_directory_uri() }}/resources/images/device2.png" data-tilt
+                            data-tilt-max="25" data-tilt-speed="400" data-tilt-perspective="1000" alt="Dr Platon device"
                             class="max-h-[260px] md:max-h-80 object-contain drop-shadow-xl" />
                     </div>
                     <div class="bg-transparent" data-animate="fade-left">

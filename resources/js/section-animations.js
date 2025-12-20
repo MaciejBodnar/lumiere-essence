@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
       case 'zoom-in':
         el.classList.add('scale-95');
         break;
+      case 'blur-in':
+        el.classList.add('blur', 'scale-110');
+        break;
       case 'fade-up':
       default:
         el.classList.add('translate-y-6');
@@ -29,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const activateElement = (el) => {
-    el.classList.add('transition-all', 'duration-700', 'ease-out');
+    el.classList.add('transition-all', 'duration-1000', 'ease-out');
 
     requestAnimationFrame(() => {
       el.classList.remove(
@@ -38,7 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         '-translate-y-6',
         'translate-x-6',
         '-translate-x-6',
-        'scale-95'
+        'scale-95',
+        'blur',
+        'scale-110'
       );
       el.classList.add(
         'opacity-100',
@@ -68,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(el);
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.7 }
   );
 
   elements.forEach((el) => observer.observe(el));
