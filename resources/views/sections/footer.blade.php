@@ -6,7 +6,7 @@
                     <img src="{{ get_template_directory_uri() }}/resources/images/footer.png" alt="Lumiere Essence Logo"
                         class="h-16 mx-auto md:mx-0" />
                 </div>
-                <div class="flex justify-center items-center mt-6 gap-10">
+                <div class="flex flex-col md:flex-row justify-center items-center mt-6 gap-10">
                     <div class="flex items-center gap-10 text-sm text-[#303030]">
                         <a href="#" class="hover:text-black transition-colors duration-200">
                             <i class="fa-brands fa-facebook-f"></i>

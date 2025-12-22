@@ -1,6 +1,6 @@
 <header class="relative">
     <div class="w-full h-full bg-[#f4c8c4]">
-        <div class="bg-[#f4c8c4] max-w-7xl mx-auto flex justify-between items-center">
+        <div class="bg-[#f4c8c4] max-w-7xl mx-auto flex justify-center md:justify-between items-center">
             <div class="px-6 py-4 hidden md:flex space-x-6 text-lg text-[#7b6f69]">
                 <a href="https://www.facebook.com" target="_blank"
                     class="hover:text-[#3b2a27] transition-colors duration-300">
@@ -21,7 +21,7 @@
             </a>
         </div>
     </div>
-    <div class="flex flex-col items-center py-6">
+    <div class="flex flex-col items-center py-6 text-center">
         <div class="text-2xl font-bold text-[#3b2a27]">
             <a href="{{ home_url('/') }}" class="flex flex-col items-center space-x-2 mt-8">
                 <span class="text-[#3b2a27] heading-1 text-9xl">Lumiere Essence</span>

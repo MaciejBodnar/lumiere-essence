@@ -26,6 +26,12 @@ font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
     font-size: 120px;
     line-height: 0.5;
 }
+.stats-1 {
+    font-family: 'bickham-script-pro-3', serif;
+    font-weight: 400;
+    font-size: 220px;
+    line-height: 0.5;
+}
 
 .heading-2 {
     font-family: 'bickham-script-pro-3', serif;
