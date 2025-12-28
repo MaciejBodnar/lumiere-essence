@@ -8,6 +8,7 @@
     @php(wp_head())
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" type="image/x-icon" href="{{ get_theme_file_uri('/resources/images/favicon.png') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
