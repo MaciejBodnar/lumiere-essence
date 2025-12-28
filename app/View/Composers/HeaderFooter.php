@@ -14,7 +14,6 @@ class HeaderFooter extends Composer
     protected static $views = [
         'sections.header',
         'sections.footer',
-        'partials.mobile-nav',
     ];
 
     /**
@@ -25,107 +24,164 @@ class HeaderFooter extends Composer
     public function with()
     {
         return [
-            'social_links' => $this->getField('social_links', 'option'),
-            'booking_url' => $this->getField('booking_url', 'option'),
-            'booking_text' => $this->getField('booking_text', 'option', 'Booking'),
-            'header_logo' => $this->getLogoImage(),
-            'site_tagline' => $this->getField('site_tagline', 'option'),
-            'footer_logo' => $this->getField('footer_logo', 'option'),
-            'footer_copyright' => $this->getField('footer_copyright', 'option'),
-            'contact_phone_1' => $this->getField('contact_phone_1', 'option', '+44 742 8009 465'),
-            'contact_phone_2' => $this->getField('contact_phone_2', 'option', ' +44 784 6573 233'),
-            'contact_email' => $this->getField('contact_email', 'option', 'info@yourdomain.com'),
-            'contact_address' => $this->getField('contact_address', 'option', '123 Road Street <br>City, POST CODE'),
-            'primary_navigation' => $this->primaryNavigation(),
-            'primary_menu_html' => wp_nav_menu([
-                'theme_location' => 'primary_navigation',
-                'container'      => false,
-                'echo'           => false,
-                'fallback_cb'    => '__return_false',
-                'menu_class'     => 'hidden mt-8 md:flex space-x-8 text-[#7b6f69] text-sm uppercase tracking-[0.25em]',
-            ]),
+            'header' => $this->getHeaderData(),
+            'footer' => $this->getFooterData(),
         ];
     }
 
+    private function getHeaderData()
+    {
+        return [
+            'logo_image' => $this->getAcfImageSafe(
+                'header_logo_image',
+                false,
+                'full',
+                get_theme_file_uri('/resources/images/footer.png')
+            ),
+            'social_icons' => [
+                [
+                    'icon' => '<i class="fa-brands fa-facebook-f fa-sm"></i>',
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', false, 'www.facebook.com')),
+                ],
+                [
+                    'icon' => '<i class="fa-brands fa-instagram fa-sm"></i>',
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', false, 'www.instagram.com')),
+                ],
+                [
+                    'icon' => '<i class="fa-brands fa-tiktok fa-sm"></i>',
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', false, 'www.tiktok.com')),
+                ]
+            ],
+            'booking_button_text' => $this->getAcfFieldSafe('header_booking_button_text', false, 'Book Now'),
+            'booking_button_url' => $this->formatUrl($this->getAcfFieldSafe('header_booking_button_url', false, '/booking')),
+
+        ];
+    }
+
+    private function getFooterData()
+    {
+        return [
+            'footer_logo_image' => $this->getAcfImageSafe(
+                'footer_logo_image',
+                false,
+                'full',
+                get_theme_file_uri('/resources/images/footer.png')
+            ),
+            'social_icons' => [
+                [
+                    'icon' => '<i class="fa-brands fa-facebook-f fa-sm"></i>',
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', false, 'www.facebook.com')),
+                ],
+                [
+                    'icon' => '<i class="fa-brands fa-instagram fa-sm"></i>',
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', false, 'www.instagram.com')),
+                ],
+                [
+                    'icon' => '<i class="fa-brands fa-tiktok fa-sm"></i>',
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', false, 'www.tiktok.com')),
+                ]
+            ],
+            'footer_line_image' => $this->getAcfImageSafe(
+                'footer_line_image',
+                false,
+                'full',
+                get_theme_file_uri('/resources/images/footer-line.png')
+            ),
+            'footer_copyright' => $this->getAcfFieldSafe('footer_copyright', false, '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
+            'footer_privacy' => $this->getAcfFieldSafe('footer_privacy', false, 'Privacy Policy | T&amp;C'),
+            'quick_links' => $this->getAcfFieldSafe('quick_links', false, 'Quick Links'),
+            'pages' => [
+                [
+                    'title' => 'About Us',
+                    'url' => home_url('/about'),
+                ],
+                [
+                    'title' => 'Contact',
+                    'url' => home_url('/contact'),
+                ],
+                [
+                    'title' => 'Treatments',
+                    'url' => home_url('/treatments'),
+                ]
+            ],
+            'contact' => $this->getAcfFieldSafe('contact', false, 'Contact'),
+            'contact_phone_1' => $this->getAcfFieldSafe('contact_phone_1', false, '+44 742 8009 465'),
+            'contact_phone_2' => $this->getAcfFieldSafe('contact_phone_2', false, '+44 784 6573 233'),
+            'contact_email' => $this->getAcfFieldSafe('contact_email', false, 'info@yourdomain.com'),
+            'contact_address' => $this->getAcfFieldSafe('contact_address', false, '123 Road Street <br> City, POST CODE'),
+
+        ];
+    }
+
+
+
     /**
-     * Safely retrieve ACF field.
+     * Format URL to ensure it's absolute or has protocol
      *
-     * @param string $field
-     * @param mixed $id
-     * @param mixed $default
+     * @param string $url
+     * @return string
+     */
+    private function formatUrl($url)
+    {
+        if (empty($url)) {
+            return $url;
+        }
+
+        // If it starts with /, treat as internal relative to home_url
+        if (strpos($url, '/') === 0) {
+            return \home_url($url);
+        }
+
+        // If it doesn't have a protocol and doesn't look like an anchor or mailto/tel
+        if (!preg_match("~^(?:f|ht)tps?://~i", $url) && strpos($url, 'mailto:') !== 0 && strpos($url, 'tel:') !== 0 && strpos($url, '#') !== 0) {
+            return 'https://' . $url;
+        }
+
+        return $url;
+    }
+
+
+    /**
+     * Safe ACF field retrieval with fallback
+     *
+     * @param string $field_name
+     * @param mixed $post_id
+     * @param mixed $fallback
      * @return mixed
      */
-    private function getField($field, $id = null, $default = null)
+    private function getAcfFieldSafe($field_name, $post_id = false, $fallback = null)
     {
         if (function_exists('get_field')) {
-            $value = \get_field($field, $id);
-            return $value ?: $default;
+            $value = \get_field($field_name, $post_id);
+            return !empty($value) ? $value : $fallback;
         }
-        return $default;
+        return $fallback;
     }
 
     /**
-     * Returns the primary navigation.
+     * Safe ACF image retrieval with fallback
      *
-     * @return array
+     * @param string $field_name
+     * @param mixed $post_id
+     * @param string $size
+     * @param string $fallback_url
+     * @return string
      */
-    public function primaryNavigation()
+    private function getAcfImageSafe($field_name, $post_id = false, $size = 'full', $fallback_url = '')
     {
-        if (\has_nav_menu('primary_navigation')) {
-            $menu_items = \wp_get_nav_menu_items(\get_nav_menu_locations()['primary_navigation']);
-
-            if ($menu_items) {
-                global $wp;
-                $current_url = \home_url(\add_query_arg([], $wp->request));
-
-                foreach ($menu_items as $item) {
-                    $item->active = ($item->url === $current_url) || ($item->url === $current_url . '/');
-                }
-                return $menu_items;
-            }
-        }
-
-        return [];
-    }
-
-    /**
-     * Get logo image URL from ACF or fallback
-     *
-     * @return array
-     */
-    private function getLogoImage()
-    {
-        $default = [
-            'url' => \get_theme_file_uri('/resources/images/footer.png'),
-            'alt' => \get_bloginfo('name', 'display'),
-        ];
-
         if (function_exists('get_field')) {
-            $logo_field = \get_field('header_logo', 'option') ?: \get_field('header_logo_image', 'option');
+            $image = \get_field($field_name, $post_id);
 
-            if (!empty($logo_field)) {
-                // Handle different ACF image field return types
-                if (is_array($logo_field) && isset($logo_field['url'])) {
-                    return $logo_field;
-                } elseif (is_numeric($logo_field)) {
-                    $image_url = \wp_get_attachment_image_url($logo_field, 'full');
-                    $image_alt = \get_post_meta($logo_field, '_wp_attachment_image_alt', true);
-                    if ($image_url) {
-                        return [
-                            'url' => $image_url,
-                            'alt' => $image_alt ?: $default['alt'],
-                        ];
-                    }
-                } elseif (is_string($logo_field)) {
-                    return [
-                        'url' => $logo_field,
-                        'alt' => $default['alt'],
-                    ];
+            if ($image) {
+                if (is_array($image) && isset($image['url'])) {
+                    return $image['url'];
+                } elseif (is_string($image)) {
+                    return wp_get_attachment_image_url($image, $size) ?: $image;
+                } elseif (is_numeric($image)) {
+                    return wp_get_attachment_image_url($image, $size) ?: $fallback_url;
                 }
             }
         }
-
-        // Fallback to default logo
-        return $default;
+        return $fallback_url;
     }
 }

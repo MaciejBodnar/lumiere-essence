@@ -11,10 +11,10 @@
             style="background-image: url('{{ $about['hero']['hero_bg_image'] }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
             aria-hidden="true"></div>
 
-        <div class="relative max-w-6xl mx-auto px-6 lg:px-0 grid md:grid-cols-[1.3fr_1fr] gap-12 items-center">
+        <div class="relative max-w-6xl mx-auto px-6 lg:px-0 pt-10 md:pt-0 grid md:grid-cols-[1.3fr_1fr] gap-12 items-center">
             <div data-animate="fade-up" data-animate-delay="300">
                 <div class="flex items-baseline gap-4 mb-6">
-                    <h2 class="heading-1 text-4xl md:text-5xl text-[#3b2a27]">
+                    <h2 class="heading-1 text-4xl md:text-5xl text-[#3b2a27] mt-20">
                         {{ $about['hero']['title'] }}
                     </h2>
                     <span class="tracking-[0.35em] md:text-xl uppercase text-[#7b6f69]">
@@ -35,11 +35,11 @@
     </section>
 
     <section class="bg-[#F2C7C7] py-12 md:py-16">
-        <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center text-[#2e2725]">
+        <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-20 text-center text-[#2e2725]">
             @foreach ($about['statistics'] as $statistic)
                 <div data-animate="fade-up" data-animate-delay="{{ $loop->index * 150 }}">
                     <p class="heading-1 text-4xl md:text-5xl mb-1">{{ $statistic['number'] }}</p>
-                    <p class="tracking-[0.25em] text-md uppercase">
+                    <p class="tracking-[0.25em] text-md uppercase mt-5">
                         {!! $statistic['label'] !!}
                     </p>
                 </div>

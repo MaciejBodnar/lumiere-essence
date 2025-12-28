@@ -1,7 +1,7 @@
-@import "tailwindcss" theme(static);
+@import "tailwindcss";
 @source "../views/";
 @source "../../app/";
-
+@import "./cf7.css";
 @font-face {
 font-family:"bickham-script-pro-3";
 src:url("https://use.typekit.net/af/85e324/000000000000000077359400/31/l?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/85e324/000000000000000077359400/31/d?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/85e324/000000000000000077359400/31/a?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n4&v=3") format("opentype");
@@ -24,7 +24,7 @@ font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
     font-family: 'bickham-script-pro-3', serif;
     font-weight: 400;
     font-size: 120px;
-    line-height: 0.5;
+    line-height: 0.1;
 }
 .stats-1 {
     font-family: 'bickham-script-pro-3', serif;
@@ -58,6 +58,19 @@ a {
 .wpcf7-form .wpcf7-response-output {
   display: none !important;
 }
+
+input {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border-radius: 0;
+  border-width: 1px;
+  width: 100%;
+  border-color: #0b285f;
+
+}
+
 
 .card {
   opacity: 0;

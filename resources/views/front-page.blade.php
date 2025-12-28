@@ -86,10 +86,10 @@
                 <div
                     class="max-w-6xl mx-auto px-6 lg:px-0 py-16 lg:py-32 grid md:grid-cols-3 gap-12 items-center justify-center">
                     <div data-animate="fade-up" class="col-span-2 text-center">
-                        <p class="text-8xl text-[#3b2a27] mb-2 heading-1" data-animate="blur-in" data-animate-delay="300">
+                        <p class="text-8xl text-[#3b2a27] mb-6 heading-1" data-animate="blur-in" data-animate-delay="300">
                             {{ $main['reviews']['title'] }}
                         </p>
-                        <p class="tracking-[0.35em] text-[10px] md:text-xs uppercase mb-6">
+                        <p class="tracking-[0.35em] text-[10px] md:text-xs uppercase mb-10">
                             {{ $main['reviews']['title_2'] }}
                         </p>
                         <div class="relative px-12">
@@ -143,14 +143,14 @@
                 @endforeach
                 <div></div>
             </div>
-            <div class="md:ml-20 relative md:absolute md:inset-0 pointer-events-none flex justify-center md:block">
+            <div class="md:ml-20 relative md:absolute md:inset-0 md:right-0 pointer-events-none flex md:block">
                 <div class="max-w-6xl mx-auto h-full relative">
                     <div
-                        class="md:absolute md:top-10 md:right-0 min-w-full md:w-1/3 md:flex md:justify-center translate-x-1/2 h-full md:translate-0 overflow-visible z-50">
-                        <div class="animate-float w-full h-full flex justify-center">
-                            <div class="relative w-full h-full flex justify-center">
+                        class="md:absolute md:top-10 md:right-0 md:w-1/3 md:flex translate-x-1/2 h-full md:translate-0 overflow-visible z-50">
+                        <div class="animate-float w-full h-full">
+                            <div class="relative w-full h-full">
                                 <img src="{{ $main['reviews']['device_image'] }}" alt="Aesthetic treatment device"
-                                    class="w-full h-full max-h-[636px] md:max-h-[750px] object-cover drop-shadow-xl overflow-visible" />
+                                    class="w-full h-full max-h-[636px] md:max-h-[750px] object-cover md:object-contain drop-shadow-xl overflow-visible" />
                             </div>
                         </div>
                     </div>

@@ -1,15 +1,8 @@
 <nav class="flex flex-col">
     <div class="w-full max-w-lg px-6">
         <ul class="flex flex-col gap-4 justify-center items-center italic">
-            @if ($primary_navigation)
-                @foreach ($primary_navigation as $item)
-                    <li>
-                        <a href="{{ $item->url }}"
-                            class="block w-full px-4 py-3 bg-transparent text-2xl uppercase text-[#3b2a27] hover:text-[#C49090] transition rounded-lg {{ $item->active ? 'text-[#C49090]' : '' }}">
-                            {{ $item->title }}
-                        </a>
-                    </li>
-                @endforeach
+            @if (!empty($primary_menu_html))
+                {!! $primary_menu_html !!}
             @else
                 <li><a href="/"
                         class="block w-full px-4 py-3 bg-transparent text-2xl uppercase text-[#3b2a27] hover:text-[#C49090] transition rounded-lg">Home</a>

@@ -2,33 +2,26 @@
     <div class="w-full h-full bg-[#f4c8c4]">
         <div class="bg-[#f4c8c4] max-w-7xl mx-auto flex justify-between items-center">
             <div class="px-8 md:px-6 py-4 flex space-x-6 text-lg">
-                <a href="https://www.facebook.com" target="_blank"
-                    class="hover:text-[#3b2a27] transition-colors duration-300">
-                    <i class="fa-brands fa-facebook-f fa-sm"></i>
-                </a>
-                <a href="https://www.instagram.com" target="_blank"
-                    class="hover:text-[#3b2a27] transition-colors duration-300">
-                    <i class="fa-brands fa-instagram fa-sm"></i>
-                </a>
-                <a href="https://www.tiktok.com" target="_blank"
-                    class="hover:text-[#3b2a27] transition-colors duration-300">
-                    <i class="fa-brands fa-tiktok fa-sm"></i>
-                </a>
+                @foreach ($header['social_icons'] as $platform)
+                    <a href="{{ $platform['url'] }}" target="_blank"
+                        class="hover:text-[#3b2a27] transition-colors duration-300">
+                        @if (!empty($platform['icon']))
+                            {!! $platform['icon'] !!}
+                        @endif
+                    </a>
+                @endforeach
             </div>
-            <a href="{{ $booking_url ?: '#booking' }}"
+            <a href="{{ $header['booking_button_url'] }}"
                 class="min-h-[60px] md:min-w-[256px] min-w-40 bg-[#EFD9D1] hover:bg-[#EFD9D1]/40 flex items-center justify-center h-full uppercase tracking-[0.25em]">
-                {{ $booking_text }}
+                {{ $header['booking_button_text'] }}
             </a>
         </div>
     </div>
     <div class="flex flex-col items-center py-6 text-center">
         <div class="text-2xl font-bold text-[#3b2a27]">
             <a href="{{ home_url('/') }}" class="flex flex-col items-center space-x-2 mt-8">
-                @if ($header_logo)
-                    <img src="{{ $header_logo['url'] }}" alt="{{ $header_logo['alt'] }}"
-                        class="px-10 md:px-0 h-14 md:h-24 w-auto" />
-                @else
-                    <span class="text-[#3b2a27] heading-1 text-9xl">{{ $siteName }}</span>
+                @if ($header['logo_image'])
+                    <img src="{{ $header['logo_image'] }}" alt="Logo" class="px-10 md:px-0 h-14 md:h-24 w-auto" />
                 @endif
             </a>
         </div>
@@ -62,8 +55,8 @@
             <div class="max-w-3xl mx-auto px-6 py-10">
                 <div class="flex items-center justify-between mb-8">
                     <a href="{{ home_url('/') }}" class="flex items-center gap-3">
-                        @if ($header_logo)
-                            <img src="{{ $header_logo['url'] }}" alt="{{ $header_logo['alt'] }}"
+                        @if ($header['logo_image'])
+                            <img src="{{ $header['logo_image'] }}" alt="{{ $header['logo_image'] }}"
                                 class="w-10 h-12 object-contain" />
                         @else
                             <img src="@asset('images/favico.png')" alt="{{ $siteName }}" class="w-10 h-12 object-contain" />
