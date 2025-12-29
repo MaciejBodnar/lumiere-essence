@@ -28,17 +28,15 @@
 
 
         <nav class="hidden mt-8 md:flex space-x-8 text-[#7b6f69] text-sm uppercase tracking-[0.25em]">
-            <nav class="hidden mt-8 md:flex space-x-8 text-[#7b6f69] text-sm uppercase tracking-[0.25em]">
-                @if (!empty($primary_menu_html))
-                    {!! $primary_menu_html !!}
-                @else
-                    <a href="{{ home_url('/') }}" class="hover:text-[#3b2a27] transition-colors duration-300">Home</a>
-                    <a href="/about" class="hover:text-[#3b2a27] transition-colors duration-300">About</a>
-                    <a href="/treatments" class="hover:text-[#3b2a27] transition-colors duration-300">Treatments</a>
-                    <a href="/devices" class="hover:text-[#3b2a27] transition-colors duration-300">Our Devices</a>
-                    <a href="/contact" class="hover:text-[#3b2a27] transition-colors duration-300">Contact</a>
-                @endif
-            </nav>
+            @if (!empty($primary_menu_html))
+                {!! $primary_menu_html !!}
+            @else
+                <a href="{{ home_url('/') }}" class="hover:text-[#3b2a27] transition-colors duration-300">Home</a>
+                <a href="/about" class="hover:text-[#3b2a27] transition-colors duration-300">About</a>
+                <a href="/treatments" class="hover:text-[#3b2a27] transition-colors duration-300">Treatments</a>
+                <a href="/devices" class="hover:text-[#3b2a27] transition-colors duration-300">Our Devices</a>
+                <a href="/contact" class="hover:text-[#3b2a27] transition-colors duration-300">Contact</a>
+            @endif
 
         </nav>
         <button id="mobile-menu-toggle"

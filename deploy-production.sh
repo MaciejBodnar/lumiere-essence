@@ -33,6 +33,9 @@ echo "   ✓ Copying images..."
 mkdir -p "$DEPLOY_FOLDER/resources"
 cp -r resources/images "$DEPLOY_FOLDER/resources/" 2>/dev/null || echo "⚠️  resources/images/ not found"
 
+echo "   ✓ Copying videos source files..."
+cp -r resources/videos "$DEPLOY_FOLDER/resources/" 2>/dev/null || echo "⚠️  resources/videos/ not found"
+
 echo "   ✓ Copying CSS source files..."
 cp -r resources/css "$DEPLOY_FOLDER/resources/" 2>/dev/null || echo "⚠️  resources/css/ not found"
 

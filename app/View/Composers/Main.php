@@ -46,6 +46,12 @@ class Main extends Composer
                 'full',
                 get_theme_file_uri('/resources/videos/movie-main.mp4')
             ),
+            'video_placeholder' => $this->getAcfImageSafe(
+                'hero_video_placeholder',
+                false,
+                'full',
+                get_theme_file_uri('/resources/images/hero-video-placeholder.png')
+            ),
             'title' => $this->getAcfFieldSafe('hero_title', false, 'About'),
             'title_2' => $this->getAcfFieldSafe('hero_title_2', false, 'us'),
             'hero_bg_image' => $this->getAcfImageSafe(

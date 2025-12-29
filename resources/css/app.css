@@ -47,7 +47,7 @@ font-display:auto;font-style:normal;font-weight:700;font-stretch:normal;
 }
 
 a {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
 .screen-reader-response {

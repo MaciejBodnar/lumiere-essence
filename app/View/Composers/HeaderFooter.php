@@ -26,6 +26,13 @@ class HeaderFooter extends Composer
         return [
             'header' => $this->getHeaderData(),
             'footer' => $this->getFooterData(),
+            'primary_menu_html' => wp_nav_menu([
+                'theme_location' => 'primary_navigation',
+                'container'      => false,
+                'echo'           => false,
+                'fallback_cb'    => '__return_false',
+                'menu_class'     => 'hidden md:flex space-x-8 text-[#7b6f69] text-sm uppercase tracking-[0.25em]',
+            ]),
         ];
     }
 

@@ -8,7 +8,8 @@
     <div>
         <section
             class="bg-[#EDD9D1] overflow-hidden sticky top-0 -z-10 h-[400px] md:h-screen w-full flex flex-col justify-center items-center">
-            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover"
+                poster="{{ $main['hero']['video_placeholder'] }}">
                 <source src="{{ $main['hero']['video_url'] }}" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-black/10"></div>
