@@ -95,7 +95,7 @@ class About extends Composer
 
         if (empty($paragraphs)) {
             return [
-                'title' => $this->getAcfFieldSafe('info_title', false, 'Lumiere Essence'),
+                'title' => 'Lumiere Essence',
                 'content' => [
                     [
                         'content' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
@@ -108,6 +108,7 @@ class About extends Composer
         }
 
         return [
+            'title' => $this->getAcfFieldSafe('info_title', false, 'Lumiere Essence'),
             'content' => $paragraphs,
         ];
     }

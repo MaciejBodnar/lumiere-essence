@@ -69,7 +69,7 @@ class Devices extends Composer
                 $device[] = [
                     'title' => $row['title'] ?? '',
                     'description' => $row['description'] ?? '',
-                    'image' => $row['image'] ?? '',
+                    'image' => $this->getImageUrl($row['image'] ?? ''),
                 ];
             }
         }
@@ -130,6 +130,28 @@ class Devices extends Composer
         return $url;
     }
 
+
+    /**
+     * Get image URL from ACF field value (ID, array, or URL)
+     *
+     * @param mixed $image
+     * @param string $size
+     * @param string $fallback_url
+     * @return string
+     */
+    private function getImageUrl($image, $size = 'full', $fallback_url = '')
+    {
+        if ($image) {
+            if (is_array($image) && isset($image['url'])) {
+                return $image['url'];
+            } elseif (is_numeric($image)) {
+                return wp_get_attachment_image_url($image, $size) ?: $fallback_url;
+            } elseif (is_string($image)) {
+                return $image;
+            }
+        }
+        return $fallback_url;
+    }
 
     /**
      * Safe ACF field retrieval with fallback

@@ -27,7 +27,7 @@
                         {{ $contact['hero']['info_section'] }}
                     </p>
 
-                    <div class="space-y-1 text-sm text-[#7b6f69]">
+                    <div class="space-y-1 text-[#7b6f69]">
                         <p>{{ $contact['hero']['contact_no'] }}</p>
                         <p>{{ $contact['hero']['contact_no_2'] }}</p>
                         <p class="mt-2">{{ $contact['hero']['email'] }}
@@ -38,7 +38,7 @@
                         </p>
                     </div>
 
-                    <div class="mt-8 flex items-center gap-6 text-sm text-[#303030]">
+                    <div class="mt-8 flex items-center gap-6 text-[#303030]">
                         <a href="{{ $contact['hero']['facebook_url'] }}"
                             class="hover:text-black transition-colors duration-200">
                             <i class="fa-brands fa-facebook-f"></i>

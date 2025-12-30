@@ -37,55 +37,6 @@ class Contact extends Composer
     private function getHeroData()
     {
 
-        $price_rows = $this->getAcfFieldSafe('price_rows', false, []);
-
-        if (empty($price_rows)) {
-            $price = [
-                [
-                    'title' => 'Face & Neck',
-                    'services' => [
-                        [
-                            'text' => 'Treatment 1',
-                            'price' => '£100',
-                        ],
-                        [
-                            'text' => 'Treatment 2',
-                            'price' => '£150',
-                        ],
-                        [
-                            'text' => 'Treatment 3',
-                            'price' => '£200',
-                        ],
-                    ]
-                ],
-                [
-                    'title' => 'Body',
-                    'services' => [
-                        [
-                            'text' => 'Treatment 1',
-                            'price' => '£200',
-                        ],
-                        [
-                            'text' => 'Treatment 2',
-                            'price' => '£250',
-                        ],
-                        [
-                            'text' => 'Treatment 3',
-                            'price' => '£300',
-                        ],
-                    ]
-                ],
-            ];
-        } else {
-            $price = [];
-            foreach ($price_rows as $row) {
-                $price[] = [
-                    'number' => $row['number'] ?? '',
-                    'label' => $row['label'] ?? '',
-                ];
-            }
-        }
-
         return [
             'title' => $this->getAcfFieldSafe('hero_title', false, 'Contact'),
             'title_2' => $this->getAcfFieldSafe('hero_title_2', false, 'us'),

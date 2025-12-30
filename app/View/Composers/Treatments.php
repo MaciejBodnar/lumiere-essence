@@ -80,16 +80,26 @@ class Treatments extends Composer
         } else {
             $price = [];
             foreach ($price_rows as $row) {
+                $services = [];
+                if (!empty($row['services']) && is_array($row['services'])) {
+                    foreach ($row['services'] as $service) {
+                        $services[] = [
+                            'text' => $service['text'] ?? '',
+                            'price' => $service['price'] ?? '',
+                        ];
+                    }
+                }
+
                 $price[] = [
-                    'number' => $row['number'] ?? '',
-                    'label' => $row['label'] ?? '',
+                    'title' => $row['title'] ?? '',
+                    'services' => $services,
                 ];
             }
         }
 
         return [
-            'title' => $this->getAcfFieldSafe('hero_title', false, 'About'),
-            'title_2' => $this->getAcfFieldSafe('hero_title_2', false, 'us'),
+            'title' => $this->getAcfFieldSafe('hero_title', false, 'Treatments'),
+            'title_2' => $this->getAcfFieldSafe('hero_title_2', false, 'prices'),
             'hero_bg_image' => $this->getAcfImageSafe(
                 'hero_bg_image',
                 false,

@@ -31,7 +31,7 @@ class HeaderFooter extends Composer
                 'container'      => false,
                 'echo'           => false,
                 'fallback_cb'    => '__return_false',
-                'menu_class'     => 'hidden md:flex space-x-8 text-[#7b6f69] text-sm uppercase tracking-[0.25em]',
+                'items_wrap'     => '%3$s',
             ]),
         ];
     }
@@ -41,26 +41,26 @@ class HeaderFooter extends Composer
         return [
             'logo_image' => $this->getAcfImageSafe(
                 'header_logo_image',
-                false,
+                'option',
                 'full',
                 get_theme_file_uri('/resources/images/footer.png')
             ),
             'social_icons' => [
                 [
                     'icon' => '<i class="fa-brands fa-facebook-f fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', false, 'www.facebook.com')),
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', 'option', 'www.facebook.com')),
                 ],
                 [
                     'icon' => '<i class="fa-brands fa-instagram fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', false, 'www.instagram.com')),
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', 'option', 'www.instagram.com')),
                 ],
                 [
                     'icon' => '<i class="fa-brands fa-tiktok fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', false, 'www.tiktok.com')),
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', 'option', 'www.tiktok.com')),
                 ]
             ],
-            'booking_button_text' => $this->getAcfFieldSafe('header_booking_button_text', false, 'Book Now'),
-            'booking_button_url' => $this->formatUrl($this->getAcfFieldSafe('header_booking_button_url', false, '/booking')),
+            'booking_button_text' => $this->getAcfFieldSafe('header_booking_button_text', 'option', 'Book Now'),
+            'booking_button_url' => $this->formatUrl($this->getAcfFieldSafe('header_booking_button_url', 'option', '/booking')),
 
         ];
     }
@@ -70,33 +70,33 @@ class HeaderFooter extends Composer
         return [
             'footer_logo_image' => $this->getAcfImageSafe(
                 'footer_logo_image',
-                false,
+                'option',
                 'full',
                 get_theme_file_uri('/resources/images/footer.png')
             ),
             'social_icons' => [
                 [
                     'icon' => '<i class="fa-brands fa-facebook-f fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', false, 'www.facebook.com')),
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', 'option', 'www.facebook.com')),
                 ],
                 [
                     'icon' => '<i class="fa-brands fa-instagram fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', false, 'www.instagram.com')),
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', 'option', 'www.instagram.com')),
                 ],
                 [
                     'icon' => '<i class="fa-brands fa-tiktok fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', false, 'www.tiktok.com')),
+                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', 'option', 'www.tiktok.com')),
                 ]
             ],
             'footer_line_image' => $this->getAcfImageSafe(
                 'footer_line_image',
-                false,
+                'option',
                 'full',
                 get_theme_file_uri('/resources/images/footer-line.png')
             ),
-            'footer_copyright' => $this->getAcfFieldSafe('footer_copyright', false, '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
-            'footer_privacy' => $this->getAcfFieldSafe('footer_privacy', false, 'Privacy Policy | T&amp;C'),
-            'quick_links' => $this->getAcfFieldSafe('quick_links', false, 'Quick Links'),
+            'footer_copyright' => $this->getAcfFieldSafe('footer_copyright', 'option', '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
+            'footer_privacy' => $this->getAcfFieldSafe('footer_privacy', 'option', 'Privacy Policy | T&amp;C'),
+            'quick_links' => $this->getAcfFieldSafe('quick_links', 'option', 'Quick Links'),
             'pages' => [
                 [
                     'title' => 'About Us',
@@ -111,11 +111,11 @@ class HeaderFooter extends Composer
                     'url' => home_url('/treatments'),
                 ]
             ],
-            'contact' => $this->getAcfFieldSafe('contact', false, 'Contact'),
-            'contact_phone_1' => $this->getAcfFieldSafe('contact_phone_1', false, '+44 742 8009 465'),
-            'contact_phone_2' => $this->getAcfFieldSafe('contact_phone_2', false, '+44 784 6573 233'),
-            'contact_email' => $this->getAcfFieldSafe('contact_email', false, 'info@yourdomain.com'),
-            'contact_address' => $this->getAcfFieldSafe('contact_address', false, '123 Road Street <br> City, POST CODE'),
+            'contact' => $this->getAcfFieldSafe('contact', 'option', 'Contact'),
+            'contact_phone_1' => $this->getAcfFieldSafe('contact_phone_1', 'option', '+44 742 8009 465'),
+            'contact_phone_2' => $this->getAcfFieldSafe('contact_phone_2', 'option', '+44 784 6573 233'),
+            'contact_email' => $this->getAcfFieldSafe('contact_email', 'option', 'info@yourdomain.com'),
+            'contact_address' => $this->getAcfFieldSafe('contact_address', 'option', '123 Road Street <br> City, POST CODE'),
 
         ];
     }

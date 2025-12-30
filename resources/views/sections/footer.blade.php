@@ -6,7 +6,7 @@
                     <img src="{{ $footer['footer_logo_image'] }}" alt="Company Logo" class="h-16 mx-auto md:mx-0" />
                 </div>
                 <div class="flex flex-col md:flex-row justify-center items-center mt-6 gap-10">
-                    <div class="flex items-center gap-10 text-sm text-[#303030]">
+                    <div class="flex items-center gap-10 text-[#303030]">
                         @foreach ($footer['social_icons'] as $platform)
                             <a href="{{ $platform['url'] }}" target="_blank"
                                 class="hover:text-black transition-colors duration-200">
@@ -20,7 +20,7 @@
                 <p class="mt-6 text-sm text-[#7b6f69]">
                     {!! $footer['footer_copyright'] !!}
                 </p>
-                <p class="mt-1 text-sm text-[#7b6f69]">
+                <p class="mt-1 text-[#7b6f69]">
                     {!! $footer['footer_privacy'] !!}
                 </p>
             </div>
@@ -29,7 +29,7 @@
                 <p class="tracking-[0.35em] text-lg uppercase text-[#303030] mb-4">
                     Quick Links
                 </p>
-                <ul class="space-y-2 text-sm text-[#7b6f69]">
+                <ul class="space-y-2 text-[#7b6f69]">
                     @foreach ($footer['pages'] as $page)
                         <li>
                             <a href="{{ $page['url'] }}" class="hover:text-black transition-colors duration-200">
@@ -44,7 +44,7 @@
                 <p class="tracking-[0.35em] text-lg uppercase text-[#303030] mb-4">
                     Contact
                 </p>
-                <div class="space-y-2 text-sm text-[#7b6f69]">
+                <div class="space-y-2 text-[#7b6f69]">
 
                     <p>{{ $footer['contact_phone_1'] }}</p>
                     <p>{{ $footer['contact_phone_2'] }}</p>

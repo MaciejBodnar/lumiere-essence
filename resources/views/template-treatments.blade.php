@@ -13,7 +13,7 @@
 
         <div class="relative max-w-6xl mx-auto px-6 lg:px-0 py-16 lg:py-24">
             <div class="mb-12" data-animate="fade-up" data-animate-delay="300">
-                <div class="flex items-baseline gap-6">
+                <div class="flex flex-col md:flex-row items-baseline gap-6">
                     <h2 class="heading-1 text-4xl md:text-5xl text-[#3b2a27]">
                         {{ $treatments['hero']['title'] }}
                     </h2>
@@ -29,7 +29,7 @@
                         <h3 class="tracking-[0.35em] text-lg uppercase mb-10">
                             {{ $price['title'] }}
                         </h3>
-                        <ul class="space-y-3 text-[11px] md:text-sm text-[#7b6f69]">
+                        <ul class="space-y-3 text-[#7b6f69]">
                             @foreach ($price['services'] as $item)
                                 <li class="flex justify-between gap-4">
                                     <span>{{ $item['text'] }}</span>

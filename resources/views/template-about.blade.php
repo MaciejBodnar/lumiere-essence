@@ -22,7 +22,7 @@
                     </span>
                 </div>
 
-                <p class="text-base font-thin text-gray-700 space-y-4">
+                <p class="font-thin text-gray-700 space-y-4">
                     {{ $about['hero']['hero_description'] }}
                 </p>
             </div>
@@ -50,7 +50,7 @@
     <section class="py-12 md:py-24">
         <div class="max-w-6xl mx-auto px-6 " data-animate="zoom-in">
             <h2 class="uppercase tracking-[0.25em] text-xl">{{ $about['info']['title'] }}</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 text-sm font-thin text-gray-700 mt-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 font-thin text-gray-700 mt-10">
                 @foreach ($about['info']['content'] as $info_block)
                     <div>
                         {!! $info_block['content'] !!}

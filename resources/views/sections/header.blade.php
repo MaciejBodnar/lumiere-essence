@@ -29,7 +29,9 @@
 
         <nav class="hidden mt-8 md:flex space-x-8 text-[#7b6f69] text-sm uppercase tracking-[0.25em]">
             @if (!empty($primary_menu_html))
-                {!! $primary_menu_html !!}
+                <ul class="flex space-x-8">
+                    {!! $primary_menu_html !!}
+                </ul>
             @else
                 <a href="{{ home_url('/') }}" class="hover:text-[#3b2a27] transition-colors duration-300">Home</a>
                 <a href="/about" class="hover:text-[#3b2a27] transition-colors duration-300">About</a>
@@ -53,12 +55,8 @@
             <div class="max-w-3xl mx-auto px-6 py-10">
                 <div class="flex items-center justify-between mb-8">
                     <a href="{{ home_url('/') }}" class="flex items-center gap-3">
-                        @if ($header['logo_image'])
-                            <img src="{{ $header['logo_image'] }}" alt="{{ $header['logo_image'] }}"
-                                class="w-10 h-12 object-contain" />
-                        @else
-                            <img src="@asset('images/favico.png')" alt="{{ $siteName }}" class="w-10 h-12 object-contain" />
-                        @endif
+                        <img src="{{ $header['logo_image'] }}" alt="{{ $header['logo_image'] }}"
+                            class="w-20 h-12 object-contain" />
                     </a>
 
                     <button id="mobile-menu-close" aria-label="Zamknij menu"

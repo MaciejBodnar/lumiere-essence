@@ -16,7 +16,7 @@
                     {{ $devices['hero']['title'] }}
                 </h2>
             </div>
-            <div class="relative flex flex-col gap-10">
+            <div class="relative flex flex-col gap-20 md:gap-10">
                 @foreach ($devices['hero']['device'] as $device)
                     @if ($loop->index % 2 == 0)
                         <div class="card grid md:grid-cols-2 gap-10 items-center">
@@ -25,7 +25,7 @@
                                     {{ $device['title'] }}
                                 </p>
 
-                                <p class="text-sm leading-relaxed text-gray-500 max-w-xl">
+                                <p class="leading-relaxed text-gray-500 max-w-xl">
                                     {{ $device['description'] }}
                                 </p>
                             </div>
@@ -44,11 +44,11 @@
                                     class="max-h-[260px] md:max-h-80 object-contain drop-shadow-xl" />
                             </div>
                             <div class="bg-transparent" data-animate="fade-left">
-                                <p class="tracking-[0.35em] text-[10px] md:text-xs uppercase text-[#3b2a27] mb-6">
+                                <p class="tracking-[0.35em] text-lg uppercase text-[#3b2a27] mb-6">
                                     {{ $device['title'] }}
                                 </p>
 
-                                <p class="text-sm md:text-base leading-relaxed text-[#7b6f69] max-w-xl">
+                                <p class="leading-relaxed text-[#7b6f69] max-w-xl">
                                     {{ $device['description'] }}
                                 </p>
                             </div>
