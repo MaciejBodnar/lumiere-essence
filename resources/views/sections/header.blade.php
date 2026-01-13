@@ -38,10 +38,24 @@
                     </a>
                 @endforeach
             </div>
-            <a href="{{ $header['booking_button_url'] }}"
-                class="min-h-[60px] md:min-w-[256px] min-w-40 bg-[#EFD9D1] hover:bg-[#EFD9D1]/40 flex items-center justify-center h-full uppercase tracking-[0.25em]">
-                {{ $header['booking_button_text'] }}
-            </a>
+            @if (function_exists('pll_current_language'))
+                @if (pll_current_language() === 'pl')
+                    <a href="{{ $header['booking_button_url_pl'] }}"
+                        class="min-h-[60px] md:min-w-[256px] min-w-40 bg-[#EFD9D1] hover:bg-[#EFD9D1]/40 flex items-center justify-center h-full uppercase tracking-[0.25em]">
+                        {{ $header['booking_button_text_pl'] }}
+                    </a>
+                @else
+                    <a href="{{ $header['booking_button_url_en'] }}"
+                        class="min-h-[60px] md:min-w-[256px] min-w-40 bg-[#EFD9D1] hover:bg-[#EFD9D1]/40 flex items-center justify-center h-full uppercase tracking-[0.25em]">
+                        {{ $header['booking_button_text_en'] }}
+                    </a>
+                @endif
+            @else
+                <a href="{{ $header['booking_button_url_en'] }}"
+                    class="min-h-[60px] md:min-w-[256px] min-w-40 bg-[#EFD9D1] hover:bg-[#EFD9D1]/40 flex items-center justify-center h-full uppercase tracking-[0.25em]">
+                    {{ $header['booking_button_text_en'] }}
+                </a>
+            @endif
         </div>
     </div>
     <div class="flex flex-col items-center py-6 text-center">

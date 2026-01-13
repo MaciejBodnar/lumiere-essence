@@ -60,8 +60,10 @@ class HeaderFooter extends Composer
                     'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', 'option', 'www.tiktok.com')),
                 ]
             ],
-            'booking_button_text' => $this->getAcfFieldSafe('header_booking_button_text', 'option', 'Book Now'),
-            'booking_button_url' => $this->formatUrl($this->getAcfFieldSafe('header_booking_button_url', 'option', '/booking')),
+            'booking_button_text_pl' => $this->getAcfFieldSafe('header_booking_button_text_pl', 'option', 'Zamów teraz'),
+            'booking_button_url_pl' => $this->formatUrl($this->getAcfFieldSafe('header_booking_button_url_pl', 'option', '/zamowienie')),
+            'booking_button_text_en' => $this->getAcfFieldSafe('header_booking_button_text_en', 'option', 'Book Now'),
+            'booking_button_url_en' => $this->formatUrl($this->getAcfFieldSafe('header_booking_button_url_en', 'option', '/booking')),
 
         ];
     }
@@ -94,11 +96,76 @@ class HeaderFooter extends Composer
 
     private function getFooterData()
     {
-        // Get current language
-        $current_lang = function_exists('pll_current_language') ? pll_current_language() : 'en';
+        // Default fallback pages
+        $default_pages_en = [
+            [
+                'title' => 'About Us',
+                'url' => home_url('/about'),
+            ],
+            [
+                'title' => 'Contact',
+                'url' => home_url('/contact'),
+            ],
+            [
+                'title' => 'Treatments',
+                'url' => home_url('/treatments'),
+            ]
+        ];
 
-        // Common data for both languages
-        $common_data = [
+        $default_pages_pl = [
+            [
+                'title' => 'O nas',
+                'url' => home_url('/about'),
+            ],
+            [
+                'title' => 'Kontakt',
+                'url' => home_url('/contact'),
+            ],
+            [
+                'title' => 'Zabiegi',
+                'url' => home_url('/treatments'),
+            ]
+        ];
+
+        // Process English quick links
+        $quick_links_en = $this->getAcfFieldSafe('quick_links_repeater_en', 'option', []);
+        $processed_quick_links_en = [];
+
+        if (!empty($quick_links_en) && is_array($quick_links_en)) {
+            foreach ($quick_links_en as $quick_link) {
+                if (is_array($quick_link)) {
+                    $processed_quick_links_en[] = [
+                        'title' => isset($quick_link['title']) ? $quick_link['title'] : '',
+                        'url' => isset($quick_link['url']) ? $quick_link['url'] : '',
+                    ];
+                }
+            }
+        }
+
+        if (empty($processed_quick_links_en)) {
+            $processed_quick_links_en = $default_pages_en;
+        }
+
+        // Process Polish quick links
+        $quick_links_pl = $this->getAcfFieldSafe('quick_links_repeater_pl', 'option', []);
+        $processed_quick_links_pl = [];
+
+        if (!empty($quick_links_pl) && is_array($quick_links_pl)) {
+            foreach ($quick_links_pl as $quick_link) {
+                if (is_array($quick_link)) {
+                    $processed_quick_links_pl[] = [
+                        'title' => isset($quick_link['title']) ? $quick_link['title'] : '',
+                        'url' => isset($quick_link['url']) ? $quick_link['url'] : '',
+                    ];
+                }
+            }
+        }
+
+        if (empty($processed_quick_links_pl)) {
+            $processed_quick_links_pl = $default_pages_pl;
+        }
+
+        return [
             'footer_logo_image' => $this->getAcfImageSafe(
                 'footer_logo_image',
                 'option',
@@ -125,69 +192,21 @@ class HeaderFooter extends Composer
                 'full',
                 get_theme_file_uri('/resources/images/footer-line.png')
             ),
-        ];
-
-        // Language-specific data
-        if ($current_lang === 'pl') {
-            return array_merge($common_data, $this->getFooterDataPl());
-        } else {
-            return array_merge($common_data, $this->getFooterDataEn());
-        }
-    }
-
-    private function getFooterDataEn()
-    {
-        return [
-            'footer_copyright' => $this->getAcfFieldSafe('footer_copyright_en', 'option', '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
-            'footer_privacy' => $this->getAcfFieldSafe('footer_privacy_en', 'option', 'Privacy Policy | T&amp;C'),
-            'quick_links' => $this->getAcfFieldSafe('quick_links_en', 'option', 'Quick Links'),
-            'pages' => [
-                [
-                    'title' => 'About Us',
-                    'url' => home_url('/about'),
-                ],
-                [
-                    'title' => 'Contact',
-                    'url' => home_url('/contact'),
-                ],
-                [
-                    'title' => 'Treatments',
-                    'url' => home_url('/treatments'),
-                ]
-            ],
-            'contact' => $this->getAcfFieldSafe('contact_en', 'option', 'Contact'),
             'contact_phone_1' => $this->getAcfFieldSafe('contact_phone_1', 'option', '+44 742 8009 465'),
             'contact_phone_2' => $this->getAcfFieldSafe('contact_phone_2', 'option', '+44 784 6573 233'),
             'contact_email' => $this->getAcfFieldSafe('contact_email', 'option', 'info@yourdomain.com'),
-            'contact_address' => $this->getAcfFieldSafe('contact_address_en', 'option', '123 Road Street <br> City, POST CODE'),
-        ];
-    }
-
-    private function getFooterDataPl()
-    {
-        return [
-            'footer_copyright' => $this->getAcfFieldSafe('footer_copyright_pl', 'option', '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
-            'footer_privacy' => $this->getAcfFieldSafe('footer_privacy_pl', 'option', 'Polityka Prywatności | Regulamin'),
-            'quick_links' => $this->getAcfFieldSafe('quick_links_pl', 'option', 'Szybkie linki'),
-            'pages' => [
-                [
-                    'title' => 'O nas',
-                    'url' => home_url('/about'),
-                ],
-                [
-                    'title' => 'Kontakt',
-                    'url' => home_url('/contact'),
-                ],
-                [
-                    'title' => 'Zabiegi',
-                    'url' => home_url('/treatments'),
-                ]
-            ],
-            'contact' => $this->getAcfFieldSafe('contact_pl', 'option', 'Kontakt'),
-            'contact_phone_1' => $this->getAcfFieldSafe('contact_phone_1', 'option', '+44 742 8009 465'),
-            'contact_phone_2' => $this->getAcfFieldSafe('contact_phone_2', 'option', '+44 784 6573 233'),
-            'contact_email' => $this->getAcfFieldSafe('contact_email', 'option', 'info@yourdomain.com'),
-            'contact_address' => $this->getAcfFieldSafe('contact_address_pl', 'option', '123 Road Street <br> City, POST CODE'),
+            'footer_copyright_en' => $this->getAcfFieldSafe('footer_copyright_en', 'option', '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
+            'footer_privacy_en' => $this->getAcfFieldSafe('footer_privacy_en', 'option', 'Privacy Policy | T&amp;C'),
+            'quick_links_en' => $this->getAcfFieldSafe('quick_links_en', 'option', 'Quick Links'),
+            'pages_en' => $processed_quick_links_en,
+            'contact_en' => $this->getAcfFieldSafe('contact_en', 'option', 'Contact'),
+            'contact_address_en' => $this->getAcfFieldSafe('contact_address_en', 'option', '123 Road Street <br> City, POST CODE'),
+            'footer_copyright_pl' => $this->getAcfFieldSafe('footer_copyright_pl', 'option', '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
+            'footer_privacy_pl' => $this->getAcfFieldSafe('footer_privacy_pl', 'option', 'Privacy Policy | T&amp;C'),
+            'quick_links_pl' => $this->getAcfFieldSafe('quick_links_pl', 'option', 'Szybkie linki'),
+            'pages_pl' => $processed_quick_links_pl,
+            'contact_pl' => $this->getAcfFieldSafe('contact_pl', 'option', 'Kontakt'),
+            'contact_address_pl' => $this->getAcfFieldSafe('contact_address_pl', 'option', '123 Road Street <br> City, POST CODE'),
         ];
     }
 

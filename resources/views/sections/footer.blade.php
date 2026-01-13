@@ -17,32 +17,88 @@
 
                     <img src="{{ $footer['footer_line_image'] }}" alt="" />
                 </div>
-                <p class="mt-6 text-sm text-[#7b6f69]">
-                    {!! $footer['footer_copyright'] !!}
-                </p>
-                <p class="mt-1 text-[#7b6f69]">
-                    {!! $footer['footer_privacy'] !!}
-                </p>
+                @if (function_exists('pll_current_language'))
+                    @if (pll_current_language() === 'pl')
+                        <p class="mt-6 text-sm text-[#7b6f69]">
+                            {!! $footer['footer_copyright_pl'] !!}
+                        </p>
+                        <p class="mt-1 text-[#7b6f69]">
+                            {!! $footer['footer_privacy_pl'] !!}
+                        </p>
+                    @else
+                        <p class="mt-6 text-sm text-[#7b6f69]">
+                            {!! $footer['footer_copyright_en'] !!}
+                        </p>
+                        <p class="mt-1 text-[#7b6f69]">
+                            {!! $footer['footer_privacy_en'] !!}
+                        </p>
+                    @endif
+                @else
+                    <p class="mt-6 text-sm text-[#7b6f69]">
+                        {!! $footer['footer_copyright_en'] !!}
+                    </p>
+                    <p class="mt-1 text-[#7b6f69]">
+                        {!! $footer['footer_privacy_en'] !!}
+                    </p>
+                @endif
             </div>
 
             <div class="text-center">
                 <p class="tracking-[0.35em] text-lg uppercase text-[#303030] mb-4">
-                    Quick Links
+                    @if (function_exists('pll_current_language'))
+                        @if (pll_current_language() === 'pl')
+                            {{ $footer['quick_links_pl'] }}
+                        @else
+                            {{ $footer['quick_links_en'] }}
+                        @endif
+                    @else
+                        {{ $footer['quick_links_en'] }}
+                    @endif
                 </p>
                 <ul class="space-y-2 text-[#7b6f69]">
-                    @foreach ($footer['pages'] as $page)
-                        <li>
-                            <a href="{{ $page['url'] }}" class="hover:text-black transition-colors duration-200">
-                                {{ $page['title'] }}
-                            </a>
-                        </li>
-                    @endforeach
+                    @if (function_exists('pll_current_language'))
+                        @if (pll_current_language() === 'pl')
+                            @foreach ($footer['pages_pl'] as $page)
+                                <li>
+                                    <a href="{{ $page['url'] }}"
+                                        class="hover:text-black transition-colors duration-200">
+                                        {{ $page['title'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        @else
+                            @foreach ($footer['pages_en'] as $page)
+                                <li>
+                                    <a href="{{ $page['url'] }}"
+                                        class="hover:text-black transition-colors duration-200">
+                                        {{ $page['title'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        @endif
+                    @else
+                        @foreach ($footer['pages_en'] as $page)
+                            <li>
+                                <a href="{{ $page['url'] }}" class="hover:text-black transition-colors duration-200">
+                                    {{ $page['title'] }}
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
 
             <div class="text-center">
                 <p class="tracking-[0.35em] text-lg uppercase text-[#303030] mb-4">
-                    Contact
+                    @if (function_exists('pll_current_language'))
+                        @if (pll_current_language() === 'pl')
+                            {{ $footer['contact_pl'] }}
+                        @else
+                            {{ $footer['contact_en'] }}
+                        @endif
+                    @else
+                        {{ $footer['contact_en'] }}
+                    @endif
                 </p>
                 <div class="space-y-2 text-[#7b6f69]">
 
@@ -53,7 +109,15 @@
                     </p>
 
                     <p class="mt-6 leading-relaxed">
-                        {!! $footer['contact_address'] !!}
+                        @if (function_exists('pll_current_language'))
+                            @if (pll_current_language() === 'pl')
+                                {!! $footer['contact_address_pl'] !!}
+                            @else
+                                {!! $footer['contact_address_en'] !!}
+                            @endif
+                        @else
+                            {!! $footer['contact_address_en'] !!}
+                        @endif
                     </p>
                 </div>
             </div>

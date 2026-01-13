@@ -58,7 +58,15 @@
                     <p class="tracking-[0.35em] text-xl uppercase text-[#3b2a27] mb-6">
                         {{ $contact['hero']['form_title'] }}
                     </p>
-                    {!! do_shortcode('[contact-form-7 id="f1e5a3a" title="Lumiere Final"]') !!}
+                    @if (function_exists('pll_current_language'))
+                        @if (pll_current_language() === 'pl')
+                            {!! do_shortcode('[contact-form-7 id="f1e5a3a" title="Lumiere Final"]') !!}
+                        @else
+                            {!! do_shortcode('[contact-form-7 id="f1e5a3a" title="Lumiere Final"]') !!}
+                        @endif
+                    @else
+                        {!! do_shortcode('[contact-form-7 id="f1e5a3a" title="Lumiere Final"]') !!}
+                    @endif
                 </div>
             </div>
         </div>
