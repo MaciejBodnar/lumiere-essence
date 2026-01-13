@@ -2,6 +2,33 @@
     <div class="w-full h-full bg-[#f4c8c4]">
         <div class="bg-[#f4c8c4] max-w-7xl mx-auto flex justify-between items-center">
             <div class="px-8 md:px-6 py-4 flex space-x-6 text-lg">
+                @if (!empty($header['languages']))
+                    <div class="items-center gap-6 text-xs hidden md:flex">
+                        @foreach ($header['languages'] as $language)
+                            <a href="{{ $language['url'] }}"
+                                class="flex items-center gap-2 hover:cursor-pointer {{ $language['is_current'] ? 'text-[#3b2a27] font-semibold opacity-100' : 'opacity-50 hover:opacity-100 transition-opacity' }}">
+                                @if (!empty($language['flag_url']))
+                                    <img src="{{ $language['flag_url'] }}" width="22"
+                                        alt="{{ $language['name'] ?: $language['slug'] }}" />
+                                @endif
+                                <span>{{ $language['slug'] ?: $language['name'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="items-center gap-6 text-xs hidden md:flex">
+                        <a href="/pl" class="flex items-center gap-2 hover:cursor-pointer">
+                            <img src="https://kapowaz.github.io/circle-flags/flags/pl.svg" width="22"
+                                alt="PL" />
+                            <span>PL</span>
+                        </a>
+                        <a href="/en" class="flex items-center gap-2 hover:cursor-pointer">
+                            <img src="https://kapowaz.github.io/circle-flags/flags/gb.svg" width="22"
+                                alt="EN" />
+                            <span>EN</span>
+                        </a>
+                    </div>
+                @endif
                 @foreach ($header['social_icons'] as $platform)
                     <a href="{{ $platform['url'] }}" target="_blank"
                         class="hover:text-[#3b2a27] transition-colors duration-300">
@@ -69,6 +96,21 @@
                         </svg>
                     </button>
                 </div>
+
+                @if (!empty($header['languages']))
+                    <div class="flex justify-end gap-4 mb-6 text-xs uppercase tracking-[0.25em] text-[#3b2a27]">
+                        @foreach ($header['languages'] as $language)
+                            <a href="{{ $language['url'] }}"
+                                class="flex items-center gap-2 {{ $language['is_current'] ? 'font-semibold' : '' }}">
+                                @if (!empty($language['flag_url']))
+                                    <img src="{{ $language['flag_url'] }}" width="22"
+                                        alt="{{ $language['name'] ?: $language['slug'] }}" />
+                                @endif
+                                <span>{{ $language['slug'] ?: $language['name'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
 
                 <div class="mobile-nav-wrapper">
                     @include('partials.mobile-nav')

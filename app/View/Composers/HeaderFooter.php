@@ -45,6 +45,7 @@ class HeaderFooter extends Composer
                 'full',
                 get_theme_file_uri('/resources/images/footer.png')
             ),
+            'languages' => $this->getLanguages(),
             'social_icons' => [
                 [
                     'icon' => '<i class="fa-brands fa-facebook-f fa-sm"></i>',
@@ -65,9 +66,39 @@ class HeaderFooter extends Composer
         ];
     }
 
+    private function getLanguages()
+    {
+        if (!function_exists('pll_the_languages')) {
+            return [];
+        }
+
+        $languages = \pll_the_languages([
+            'raw' => true,
+            'hide_if_empty' => false,
+        ]);
+
+        if (!is_array($languages)) {
+            return [];
+        }
+
+        return array_map(function ($language) {
+            return [
+                'name' => $language['name'] ?? '',
+                'slug' => isset($language['slug']) ? strtoupper($language['slug']) : '',
+                'url' => $language['url'] ?? '',
+                'is_current' => !empty($language['current_lang']),
+                'flag_url' => !empty($language['custom_flag_url']) ? $language['custom_flag_url'] : ($language['flag'] ?? null),
+            ];
+        }, $languages);
+    }
+
     private function getFooterData()
     {
-        return [
+        // Get current language
+        $current_lang = function_exists('pll_current_language') ? pll_current_language() : 'en';
+
+        // Common data for both languages
+        $common_data = [
             'footer_logo_image' => $this->getAcfImageSafe(
                 'footer_logo_image',
                 'option',
@@ -94,9 +125,22 @@ class HeaderFooter extends Composer
                 'full',
                 get_theme_file_uri('/resources/images/footer-line.png')
             ),
-            'footer_copyright' => $this->getAcfFieldSafe('footer_copyright', 'option', '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
-            'footer_privacy' => $this->getAcfFieldSafe('footer_privacy', 'option', 'Privacy Policy | T&amp;C'),
-            'quick_links' => $this->getAcfFieldSafe('quick_links', 'option', 'Quick Links'),
+        ];
+
+        // Language-specific data
+        if ($current_lang === 'pl') {
+            return array_merge($common_data, $this->getFooterDataPl());
+        } else {
+            return array_merge($common_data, $this->getFooterDataEn());
+        }
+    }
+
+    private function getFooterDataEn()
+    {
+        return [
+            'footer_copyright' => $this->getAcfFieldSafe('footer_copyright_en', 'option', '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
+            'footer_privacy' => $this->getAcfFieldSafe('footer_privacy_en', 'option', 'Privacy Policy | T&amp;C'),
+            'quick_links' => $this->getAcfFieldSafe('quick_links_en', 'option', 'Quick Links'),
             'pages' => [
                 [
                     'title' => 'About Us',
@@ -111,12 +155,39 @@ class HeaderFooter extends Composer
                     'url' => home_url('/treatments'),
                 ]
             ],
-            'contact' => $this->getAcfFieldSafe('contact', 'option', 'Contact'),
+            'contact' => $this->getAcfFieldSafe('contact_en', 'option', 'Contact'),
             'contact_phone_1' => $this->getAcfFieldSafe('contact_phone_1', 'option', '+44 742 8009 465'),
             'contact_phone_2' => $this->getAcfFieldSafe('contact_phone_2', 'option', '+44 784 6573 233'),
             'contact_email' => $this->getAcfFieldSafe('contact_email', 'option', 'info@yourdomain.com'),
-            'contact_address' => $this->getAcfFieldSafe('contact_address', 'option', '123 Road Street <br> City, POST CODE'),
+            'contact_address' => $this->getAcfFieldSafe('contact_address_en', 'option', '123 Road Street <br> City, POST CODE'),
+        ];
+    }
 
+    private function getFooterDataPl()
+    {
+        return [
+            'footer_copyright' => $this->getAcfFieldSafe('footer_copyright_pl', 'option', '2025 Lumiere Essence Skincare and Aesthetic – D&amp;C with <i class="fa-solid fa-heart" style="color: #C49090;"></i> SLT Media'),
+            'footer_privacy' => $this->getAcfFieldSafe('footer_privacy_pl', 'option', 'Polityka Prywatności | Regulamin'),
+            'quick_links' => $this->getAcfFieldSafe('quick_links_pl', 'option', 'Szybkie linki'),
+            'pages' => [
+                [
+                    'title' => 'O nas',
+                    'url' => home_url('/about'),
+                ],
+                [
+                    'title' => 'Kontakt',
+                    'url' => home_url('/contact'),
+                ],
+                [
+                    'title' => 'Zabiegi',
+                    'url' => home_url('/treatments'),
+                ]
+            ],
+            'contact' => $this->getAcfFieldSafe('contact_pl', 'option', 'Kontakt'),
+            'contact_phone_1' => $this->getAcfFieldSafe('contact_phone_1', 'option', '+44 742 8009 465'),
+            'contact_phone_2' => $this->getAcfFieldSafe('contact_phone_2', 'option', '+44 784 6573 233'),
+            'contact_email' => $this->getAcfFieldSafe('contact_email', 'option', 'info@yourdomain.com'),
+            'contact_address' => $this->getAcfFieldSafe('contact_address_pl', 'option', '123 Road Street <br> City, POST CODE'),
         ];
     }
 
