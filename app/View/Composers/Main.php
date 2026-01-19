@@ -44,7 +44,7 @@ class Main extends Composer
                 'hero_video_url',
                 false,
                 'full',
-                get_theme_file_uri('/resources/videos/movie-main.mp4')
+                get_theme_file_uri('/resources/videos/film_www.webm')
             ),
             'video_placeholder' => $this->getAcfImageSafe(
                 'hero_video_placeholder',
