@@ -31,6 +31,7 @@ class About extends Composer
     {
         return [
             'hero' => $this->getHeroData(),
+            'hero_2' => $this->getHero2Data(),
             'statistics' => $this->getStatisticsData(),
             'info' => $this->getInfoData(),
             'cta_section' => $this->getCtaSectionData(),
@@ -55,6 +56,21 @@ class About extends Composer
                 get_theme_file_uri('/resources/images/flower-bg-about.png')
             ),
             'hero_description' => $this->getAcfFieldSafe('hero_description', false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'),
+        ];
+    }
+
+    private function getHero2Data()
+    {
+        return [
+            'title' => $this->getAcfFieldSafe('hero_2_title', false, 'About'),
+            'title_2' => $this->getAcfFieldSafe('hero_2_title_2', false, 'us'),
+            'hero_image' => $this->getAcfImageSafe(
+                'hero_2_image',
+                false,
+                'full',
+                get_theme_file_uri('/resources//images/woman-leaf.png')
+            ),
+            'hero_description' => $this->getAcfFieldSafe('hero_2_description', false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'),
         ];
     }
 

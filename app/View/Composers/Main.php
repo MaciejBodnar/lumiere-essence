@@ -50,8 +50,16 @@ class Main extends Composer
                 'hero_video_placeholder',
                 false,
                 'full',
-                get_theme_file_uri('/resources/images/hero-video-placeholder.png')
+                get_theme_file_uri('/resources/images/young-woman-with-seductive-pose-after-beauty-treatment.png')
             ),
+            'image_mobile' => $this->getAcfImageSafe(
+                'hero_image_mobile',
+                false,
+                'full',
+                get_theme_file_uri('/resources/images/young-woman-with-seductive-mobile.png')
+            ),
+            'image_first_text' => $this->getAcfFieldSafe('hero_image_first_text', false, 'Confidence Begins'),
+            'image_second_text' => $this->getAcfFieldSafe('hero_image_second_text', false, 'With Skin You Love'),
             'title' => $this->getAcfFieldSafe('hero_title', false, 'About'),
             'title_2' => $this->getAcfFieldSafe('hero_title_2', false, 'us'),
             'hero_bg_image' => $this->getAcfImageSafe(

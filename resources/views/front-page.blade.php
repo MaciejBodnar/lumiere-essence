@@ -7,12 +7,32 @@
 @section('content')
     <div>
         <section
-            class="bg-[#EDD9D1] overflow-hidden sticky top-0 -z-10 h-[400px] md:h-screen w-full flex flex-col justify-center items-center">
-            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover"
+            class="bg-[#EDD9D1] hidden overflow-hidden sticky top-0 -z-10 h-[400px] md:h-[638px] w-full md:flex flex-col justify-center items-center">
+            {{-- <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover"
                 poster="{{ $main['hero']['video_placeholder'] }}">
                 <source src="{{ $main['hero']['video_url'] }}" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 bg-black/10"></div>
+            </video> --}}
+            <img src="{{ $main['hero']['video_placeholder'] }}" alt="Hero background image"
+                class="absolute inset-0 w-full h-full object-cover" />
+            <div class="relative z-10 w-full max-w-[1400px] px-6 flex items-center justify-between">
+                <p class="uppercase tracking-[0.35em] text-sm md:text-2xl text-black/80">
+                    {{ $main['hero']['image_first_text'] }}
+                </p>
+                <p class="uppercase tracking-[0.35em] text-sm md:text-2xl text-black/80">
+                    {{ $main['hero']['image_second_text'] }}
+                </p>
+            </div>
+        </section>
+        <section
+            class="bg-[#EDD9D1] md:hidden overflow-hidden sticky top-0 h-full w-full flex flex-col justify-center items-center text-center">
+            <p class="px-4 uppercase tracking-[0.35em] text-3xl/8 text-black/80 pt-24">
+                {{ $main['hero']['image_first_text'] }}
+            </p>
+            <p class="px-4 uppercase tracking-[0.35em] text-3xl/8 text-black/80">
+                {{ $main['hero']['image_second_text'] }}
+            </p>
+            <img src="{{ $main['hero']['image_mobile'] }}" alt="Hero background image"
+                class="w-full h-[600px] object-contain " />
         </section>
 
         <section class="relative bg-white z-10">
@@ -29,7 +49,7 @@
                     {{ $main['hero']['title_2'] }}
                 </h2>
                 <p class="font-thin text-lg text-[#7b6f69] leading-relaxed mb-8">
-                    {{ $main['hero']['hero_description'] }}
+                    {!! $main['hero']['hero_description'] !!}
                 </p>
                 <div>
                     <a href="{{ $main['hero']['hero_button_url'] }}"

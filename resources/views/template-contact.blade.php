@@ -60,12 +60,12 @@
                     </p>
                     @if (function_exists('pll_current_language'))
                         @if (pll_current_language() === 'pl')
-                            {!! do_shortcode('[contact-form-7 id="f1e5a3a" title="Lumiere Final"]') !!}
+                            {!! do_shortcode('[contact-form-7 id="a6a5a57" title="Lead from - Polski"]') !!}
                         @else
-                            {!! do_shortcode('[contact-form-7 id="f1e5a3a" title="Lumiere Final"]') !!}
+                            {!! do_shortcode('[contact-form-7 id="2b450e7" title="Lead form - english"]') !!}
                         @endif
                     @else
-                        {!! do_shortcode('[contact-form-7 id="f1e5a3a" title="Lumiere Final"]') !!}
+                        {!! do_shortcode('[contact-form-7 id="2b450e7" title="Lead form - english"]') !!}
                     @endif
                 </div>
             </div>
