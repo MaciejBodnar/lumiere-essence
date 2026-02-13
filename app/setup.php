@@ -164,11 +164,12 @@ add_action('init', function () {
     add_rewrite_rule('^about/?$', 'index.php?custom_page=about', 'top');
     add_rewrite_rule('^devices/?$', 'index.php?custom_page=devices', 'top');
     add_rewrite_rule('^contact/?$', 'index.php?custom_page=contact', 'top');
+    add_rewrite_rule('^privacy1/?$', 'index.php?custom_page=privacy1', 'top');
 
     // Flush rewrite rules if not already done
-    if (!get_option('lumiere_rewrite_rules_flushed_v4')) {
+    if (!get_option('lumiere_rewrite_rules_flushed_v5')) {
         flush_rewrite_rules();
-        update_option('lumiere_rewrite_rules_flushed_v4', true);
+        update_option('lumiere_rewrite_rules_flushed_v5', true);
     }
 });
 
@@ -237,6 +238,18 @@ add_action('template_redirect', function () {
                 }
 
                 echo view('template-contact')->render();
+                exit;
+            case 'privacy1':
+                global $wp_query, $post;
+                $privacy_page = get_page_by_path('privacy1');
+                if ($privacy_page) {
+                    $wp_query->queried_object = $privacy_page;
+                    $wp_query->queried_object_id = $privacy_page->ID;
+                    $post = $privacy_page;
+                    setup_postdata($post);
+                }
+
+                echo view('template-privacy')->render();
                 exit;
         }
     }
