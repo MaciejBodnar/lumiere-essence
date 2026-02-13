@@ -12,7 +12,7 @@
             aria-hidden="true"></div>
 
         <div class="relative max-w-6xl mx-auto px-6 lg:px-0 py-16 lg:py-24">
-            <div class="mb-12" data-animate="fade-up" data-animate-delay="300">
+            <div class="mb-4" data-animate="fade-up" data-animate-delay="300">
                 <div class="flex flex-col md:flex-row items-baseline gap-6">
                     <h2 class="heading-1 text-4xl md:text-5xl text-[#3b2a27]">
                         {{ $treatments['hero']['title'] }}
@@ -22,7 +22,7 @@
                     </span>
                 </div>
             </div>
-
+            <div class="mb-12" data-animate="fade-up" data-animate-delay="300">{!! $treatments['hero']['text'] !!}</div>
             <div class="grid gap-x-28 gap-y-16 md:grid-cols-2 text-[#3b2a27]">
                 @foreach ($treatments['hero']['price'] as $price)
                     <div data-animate="fade-up" data-animate-delay="{{ ($loop->index + 1) * 300 }}">

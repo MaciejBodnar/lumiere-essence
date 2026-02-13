@@ -21,25 +21,37 @@
                     @if (pll_current_language() === 'pl')
                         <p class="mt-6 text-sm text-[#7b6f69]">
                             {!! $footer['footer_copyright_pl'] !!}
+                            <a href="https://sltmedia.com/" target="_blank"
+                                class="hover:text-black transition-colors duration-200">SLT Media</a>
                         </p>
-                        <p class="mt-1 text-[#7b6f69]">
-                            {!! $footer['footer_privacy_pl'] !!}
-                        </p>
+                        <a href="{{ $footer['footer_privacy_url_pl'] }}">
+                            <p class="mt-1 text-[#7b6f69]">
+                                {!! $footer['footer_privacy_pl'] !!}
+                            </p>
+                        </a>
                     @else
                         <p class="mt-6 text-sm text-[#7b6f69]">
                             {!! $footer['footer_copyright_en'] !!}
+                            <a href="https://sltmedia.com/" target="_blank"
+                                class="hover:text-black transition-colors duration-200">SLT Media</a>
                         </p>
-                        <p class="mt-1 text-[#7b6f69]">
-                            {!! $footer['footer_privacy_en'] !!}
-                        </p>
+                        <a href="{{ $footer['footer_privacy_url_en'] }}">
+                            <p class="mt-1 text-[#7b6f69]">
+                                {!! $footer['footer_privacy_en'] !!}
+                            </p>
+                        </a>
                     @endif
                 @else
                     <p class="mt-6 text-sm text-[#7b6f69]">
                         {!! $footer['footer_copyright_en'] !!}
+                        <a href="https://sltmedia.com/" target="_blank"
+                            class="hover:text-black transition-colors duration-200">SLT Media</a>
                     </p>
-                    <p class="mt-1 text-[#7b6f69]">
-                        {!! $footer['footer_privacy_en'] !!}
-                    </p>
+                    <a href="{{ $footer['footer_privacy_url_en'] }}">
+                        <p class="mt-1 text-[#7b6f69]">
+                            {!! $footer['footer_privacy_en'] !!}
+                        </p>
+                    </a>
                 @endif
             </div>
 

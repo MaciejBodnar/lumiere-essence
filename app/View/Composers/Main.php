@@ -166,6 +166,7 @@ class Main extends Composer
         return [
             'title' => $this->getAcfFieldSafe('reviews_title', false, "Reviews"),
             'title_2' => $this->getAcfFieldSafe('reviews_title_2', false, "Lumiere"),
+            'text' => $this->getAcfFieldSafe('reviews_text', false, "Lumière Essence. There is no other skin like yours"),
             'reviews_list' => $reviews,
             'device_image' => $this->getAcfImageSafe(
                 'reviews_device_image',

@@ -90,7 +90,7 @@
                             <p class=" max-md:text-center tracking-[0.5em] text-3xl/10 uppercase text-[#3b2a27]">
                                 {{ $main['device_banner']['title'] }}
                             </p>
-                            <p class="text-end tracking-[0.5em] text-3xl/10 uppercase text-[#3b2a27]">
+                            <p class="text-center md:text-end tracking-[0.5em] text-3xl/10 uppercase text-[#3b2a27]">
                                 {{ $main['device_banner']['title_2'] }}
                             </p>
                         </div>
@@ -113,16 +113,17 @@
                         <p class="tracking-[0.35em] text-[10px] md:text-xs uppercase mb-10">
                             {{ $main['reviews']['title_2'] }}
                         </p>
-                        <div class="relative px-12">
+                        <div class="relative px-6 md:px-12">
                             <div id="testimonials-carousel" class="relative overflow-hidden">
                                 <div class="flex transition-transform duration-300 ease-in-out">
                                     @foreach ($main['reviews']['reviews_list'] as $testimonial)
                                         <div class="w-full shrink-0 space-y-6 text-sm  leading-relaxed">
                                             <div>
-                                                <p class="text-sm md:text-base text-[#7b6f69] leading-relaxed mb-6">
+                                                <p
+                                                    class="text-sm md:text-base text-[#7b6f69] leading-relaxed mb-6 px-4 wrap-break-word whitespace-normal">
                                                     {{ $testimonial['text'] }}</p>
                                                 <div
-                                                    class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#3b2a27] mb-6">
+                                                    class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#3b2a27] mb-6 wrap-break-word whitespace-normal">
                                                     {{ $testimonial['name'] }}</div>
                                             </div>
                                         </div>
@@ -153,15 +154,18 @@
                 </div>
             </div>
             <div
-                class="relative max-w-6xl mx-auto w-full px-0 py-12 col-span-2 md:col-span-1 md:py-24 grid grid-cols-1 sm:grid-cols-4 gap-10 text-center">
-                @foreach ($main['reviews']['statistics'] as $statistic)
+                class="relative max-w-6xl mx-auto w-full px-0 py-12 col-span-2 md:col-span-1 md:py-24 grid grid-cols-1 sm:grid-cols-4 gap-10 text-center justify-center">
+                {{-- @foreach ($main['reviews']['statistics'] as $statistic)
                     <div data-animate="blur-in" data-animate-delay="{{ $loop->index * 100 }}">
                         <p class="text-9xl text-[#3b2a27] stats-1 mb-4">{{ $statistic['number'] }}</p>
                         <p class="tracking-[0.25em] text-[10px] md:text-lg uppercase text-[#7b6f69]">
                             {!! $statistic['label'] !!}
                         </p>
                     </div>
-                @endforeach
+                @endforeach --}}
+                <div
+                    class="col-span-3 h-full md:pl-0 pl-6 tracking-widest font-light md:font-normal md:tracking-[0.5rem] text-3xl uppercase mb-3">
+                    {!! $main['reviews']['text'] !!}</div>
                 <div></div>
             </div>
             <div class="md:ml-20 relative md:absolute md:inset-0 md:right-0 pointer-events-none flex md:block">

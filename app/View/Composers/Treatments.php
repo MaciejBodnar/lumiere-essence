@@ -100,6 +100,7 @@ class Treatments extends Composer
         return [
             'title' => $this->getAcfFieldSafe('hero_title', false, 'Treatments'),
             'title_2' => $this->getAcfFieldSafe('hero_title_2', false, 'prices'),
+            'text' => $this->getAcfFieldSafe('hero_text', false, 'At Lumière Essence, treatments are performed using AlumierMD – a luxury, medical-grade cosmeceutical brand that combines science, safety and efficacy. Each protocol is individually tailored using clinically validated formulas to ensure the highest standard of skin therapy.'),
             'hero_bg_image' => $this->getAcfImageSafe(
                 'hero_bg_image',
                 false,
