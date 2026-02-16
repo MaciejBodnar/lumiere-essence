@@ -46,20 +46,19 @@ class HeaderFooter extends Composer
                 get_theme_file_uri('/resources/images/footer.png')
             ),
             'languages' => $this->getLanguages(),
-            'social_icons' => [
-                [
-                    'icon' => '<i class="fa-brands fa-facebook-f fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', 'option', 'www.facebook.com')),
-                ],
-                [
-                    'icon' => '<i class="fa-brands fa-instagram fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', 'option', 'www.instagram.com')),
-                ],
-                [
-                    'icon' => '<i class="fa-brands fa-tiktok fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', 'option', 'www.tiktok.com')),
-                ]
-            ],
+            'social_icons' => $this->getSocialIcons(),
+            // [
+            //     'icon' => '<i class="fa-brands fa-facebook-f fa-sm"></i>',
+            //     'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', 'option', 'www.facebook.com')),
+            // ],
+            // [
+            //     'icon' => '<i class="fa-brands fa-instagram fa-sm"></i>',
+            //     'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', 'option', 'www.instagram.com')),
+            // ],
+            // [
+            //     'icon' => '<i class="fa-brands fa-tiktok fa-sm"></i>',
+            //     'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', 'option', 'www.tiktok.com')),
+            // ]
             'booking_button_text_pl' => $this->getAcfFieldSafe('header_booking_button_text_pl', 'option', 'Zamów teraz'),
             'booking_button_url_pl' => $this->formatUrl($this->getAcfFieldSafe('header_booking_button_url_pl', 'option', '/zamowienie')),
             'booking_button_text_en' => $this->getAcfFieldSafe('header_booking_button_text_en', 'option', 'Book Now'),
@@ -172,20 +171,7 @@ class HeaderFooter extends Composer
                 'full',
                 get_theme_file_uri('/resources/images/footer.png')
             ),
-            'social_icons' => [
-                [
-                    'icon' => '<i class="fa-brands fa-facebook-f fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', 'option', 'www.facebook.com')),
-                ],
-                [
-                    'icon' => '<i class="fa-brands fa-instagram fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', 'option', 'www.instagram.com')),
-                ],
-                [
-                    'icon' => '<i class="fa-brands fa-tiktok fa-sm"></i>',
-                    'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', 'option', 'www.tiktok.com')),
-                ]
-            ],
+            'social_icons' => $this->getSocialIcons(),
             'footer_line_image' => $this->getAcfImageSafe(
                 'footer_line_image',
                 'option',
@@ -210,6 +196,39 @@ class HeaderFooter extends Composer
             'contact_pl' => $this->getAcfFieldSafe('contact_pl', 'option', 'Kontakt'),
             'contact_address_pl' => $this->getAcfFieldSafe('contact_address_pl', 'option', '123 Road Street <br> City, POST CODE'),
         ];
+    }
+
+    private function getSocialIcons(): array
+    {
+        $rows = $this->getAcfFieldSafe('social_icons', 'option', []);
+        $default = [
+            [
+                'icon' => '<i class="fa-brands fa-facebook-f fa-sm"></i>',
+                'url' => $this->formatUrl($this->getAcfFieldSafe('header_facebook_url', 'option', 'www.facebook.com')),
+            ],
+            [
+                'icon' => '<i class="fa-brands fa-instagram fa-sm"></i>',
+                'url' => $this->formatUrl($this->getAcfFieldSafe('header_instagram_url', 'option', 'www.instagram.com')),
+            ],
+            [
+                'icon' => '<i class="fa-brands fa-tiktok fa-sm"></i>',
+                'url' => $this->formatUrl($this->getAcfFieldSafe('header_tiktok_url', 'option', 'www.tiktok.com')),
+            ],
+        ];
+
+        if (empty($rows) || !is_array($rows)) {
+            return $default;
+        }
+
+        $icons = [];
+        foreach ($rows as $row) {
+            $icons[] = [
+                'icon' => $row['icon'] ?? '',
+                'url' => $this->formatUrl($row['url'] ?? '#'),
+            ];
+        }
+
+        return !empty($icons) ? $icons : $default;
     }
 
 
