@@ -54,7 +54,7 @@
                     </div>
                 </div>
 
-                <div data-animate="fade-right" data-animate-delay="450" class="col-span-2">
+                <div data-animate="fade-right" data-animate-delay="100" class="col-span-2">
                     <p class="tracking-[0.35em] text-xl uppercase text-[#3b2a27] mb-6">
                         {{ $contact['hero']['form_title'] }}
                     </p>

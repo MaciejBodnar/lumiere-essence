@@ -35,30 +35,14 @@
     </section>
 
     <section class="bg-[#F2C7C7] py-12 md:py-16">
-        <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-20 text-center text-[#2e2725]">
-            @foreach ($about['statistics'] as $statistic)
-                <div data-animate="fade-up" data-animate-delay="{{ $loop->index * 150 }}">
-                    <p class="heading-1 text-4xl md:text-5xl mb-1">{{ $statistic['number'] }}</p>
-                    <p class="tracking-[0.25em] text-md uppercase mt-5">
-                        {!! $statistic['label'] !!}
-                    </p>
-                </div>
-            @endforeach
-        </div>
-    </section>
-
-    {{-- <section class="py-12 md:py-24">
-        <div class="max-w-6xl mx-auto px-6 " data-animate="zoom-in">
-            <h2 class="uppercase tracking-[0.25em] text-xl">{{ $about['info']['title'] }}</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 font-thin text-gray-700 mt-10">
-                @foreach ($about['info']['content'] as $info_block)
-                    <div>
-                        {!! $info_block['content'] !!}
-                    </div>
-                @endforeach
+        <div class="max-w-4xl mx-auto px-6 gap-20 text-center text-[#2e2725]">
+            <div data-animate="fade-up" data-animate-delay="100">
+                <p class="tracking-[0.25em] text-2xl uppercase mt-5">
+                    {!! $about['statistics']['content'] !!}
+                </p>
             </div>
         </div>
-    </section> --}}
+    </section>
     <section id="about" class="relative">
         <div class="absolute inset-0 z-0 bg-cover bg-center"
             style="background-image: url('{{ $about['hero']['hero_bg_image'] }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"

@@ -76,33 +76,9 @@ class About extends Composer
 
     private function getStatisticsData()
     {
-        $stats_rows = $this->getAcfFieldSafe('statistics_rows', false, []);
-
-        if (empty($stats_rows)) {
-            return [
-                [
-                    'number' => '123',
-                    'label' => 'Professional<br />products',
-                ],
-                [
-                    'number' => '45',
-                    'label' => 'Aesthetic<br />treatments',
-                ],
-                [
-                    'number' => '6',
-                    'label' => 'Years of<br />experience',
-                ],
-            ];
-        }
-
-        $statistics = [];
-        foreach ($stats_rows as $row) {
-            $statistics[] = [
-                'number' => $row['number'] ?? '',
-                'label' => $row['label'] ?? '',
-            ];
-        }
-        return $statistics;
+        return [
+            'content' => $this->getAcfFieldSafe('statistics_content', false, 'Lumière Essence - There is no other skin like yours.'),
+        ];
     }
 
     private function getInfoData()

@@ -106,7 +106,7 @@
                 </div>
                 <div
                     class="max-w-6xl mx-auto px-6 lg:px-0 py-16 lg:py-32 grid md:grid-cols-3 gap-12 items-center justify-center">
-                    <div data-animate="fade-up" class="col-span-2 text-center">
+                    <div data-animate="fade-up" data-animate-delay="100" class="col-span-2 text-center">
                         <p class="text-8xl text-[#3b2a27] mb-6 heading-1" data-animate="blur-in" data-animate-delay="300">
                             {{ $main['reviews']['title'] }}
                         </p>
@@ -118,9 +118,9 @@
                                 <div class="flex transition-transform duration-300 ease-in-out">
                                     @foreach ($main['reviews']['reviews_list'] as $testimonial)
                                         <div class="w-full shrink-0 space-y-6 text-sm  leading-relaxed">
-                                            <div>
+                                            <div class="text-center">
                                                 <p
-                                                    class="text-sm md:text-base text-[#7b6f69] leading-relaxed mb-6 px-4 wrap-break-word whitespace-normal">
+                                                    class="text-sm md:text-base text-[#7b6f69] leading-relaxed mb-6 wrap-break-word whitespace-normal max-w-[350px] md:max-w-full mx-auto">
                                                     {{ $testimonial['text'] }}</p>
                                                 <div
                                                     class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#3b2a27] mb-6 wrap-break-word whitespace-normal">

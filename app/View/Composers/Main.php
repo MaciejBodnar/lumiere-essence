@@ -134,7 +134,7 @@ class Main extends Composer
             $reviews = [
                 [
                     'text' =>
-                    'Lorem ipsum dolor sit amet, consectetur sadipscing elit, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.',
+                    '“I felt completely looked after from the very first consultation. The skin analysis was incredibly detailed and the results feel natural and refined.”',
                     'name' => 'Alice Johnson',
                 ],
                 [
